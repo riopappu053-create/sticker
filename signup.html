@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="PrintCraft Studio - Create your custom print and packaging portal account." />
+  <title>PrintCraft · Studio Registration</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & THEME VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: rgba(21, 29, 48, 0.88);
+      --bg-card-border: rgba(99, 102, 241, 0.22);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-glow: #06b6d4;
+      --border-light: rgba(99, 102, 241, 0.22);
+      --menu-hover-bg: rgba(99, 102, 241, 0.12);
+      --input-bg: rgba(15, 23, 42, 0.75);
+      --shadow-glow: rgba(99, 102, 241, 0.25);
+      --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+    }
+
+    body.light-mode {
+      --bg-color: #f8fafc;
+      --bg-secondary: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-card-border: rgba(99, 102, 241, 0.18);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --accent-primary: #4f46e5;
+      --accent-glow: #0891b2;
+      --border-light: rgba(99, 102, 241, 0.16);
+      --menu-hover-bg: rgba(99, 102, 241, 0.08);
+      --input-bg: rgba(241, 245, 249, 0.92);
+      --shadow-glow: rgba(99, 102, 241, 0.12);
+      --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 16px;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== AMBIENT BACKLIGHTS ===== */
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .mesh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.38;
+    }
+    .mesh-1 {
+      width: 480px;
+      height: 480px;
+      top: -10%;
+      right: -8%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%);
+    }
+    .mesh-2 {
+      width: 520px;
+      height: 520px;
+      bottom: -12%;
+      left: -8%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+    }
+
+    /* Floating Stickers */
+    .floating-stickers {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .sticker-badge {
+      position: absolute;
+      bottom: -120px;
+      padding: 7px 15px;
+      border-radius: 40px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      opacity: 0.3;
+      animation: stickerFloat 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .sticker-badge i { color: var(--accent-glow); }
+    .sticker-badge:nth-child(1) { left: 6%; animation-duration: 22s; animation-delay: 0s; }
+    .sticker-badge:nth-child(2) { left: 28%; animation-duration: 18s; animation-delay: 3s; }
+    .sticker-badge:nth-child(3) { left: 64%; animation-duration: 24s; animation-delay: 1s; }
+    .sticker-badge:nth-child(4) { left: 86%; animation-duration: 19s; animation-delay: 5s; }
+
+    @keyframes stickerFloat {
+      0% { transform: translateY(0) rotate(-6deg); opacity: 0; }
+      15% { opacity: 0.45; }
+      85% { opacity: 0.45; }
+      100% { transform: translateY(-115vh) rotate(12deg); opacity: 0; }
+    }
+
+    /* ===== SIGNUP CARD LAYOUT ===== */
+    .signup-wrap {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 480px;
+    }
+    .signup-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 24px;
+      padding: 1.85rem 2rem;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 45px var(--shadow-glow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    /* Brand Logo */
+    .brand-logo-area {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 0.85rem;
+    }
+    .brand-icon-wrapper {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-light);
+      background: rgba(99, 102, 241, 0.12);
+      flex-shrink: 0;
+    }
+    .brand-icon-wrapper i {
+      color: var(--accent-glow);
+      font-size: 1rem;
+    }
+    .brand-logo-text {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .brand-logo-text span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.85px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .input-box {
+      position: relative;
+      width: 100%;
+    }
+    .input-box input {
+      width: 100%;
+      padding: 9.5px 14px 9.5px 38px;
+      background: var(--input-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .input-box input:focus {
+      border-color: var(--accent-glow);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+    }
+    .input-box .field-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      pointer-events: none;
+      transition: color 0.25s;
+    }
+    .input-box input:focus ~ .field-icon {
+      color: var(--accent-glow);
+    }
+    .pass-toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      padding: 4px;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .pass-toggle-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Password Strength Meter */
+    .password-strength {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 5px;
+    }
+    .strength-bars {
+      display: flex;
+      flex: 1;
+      gap: 4px;
+    }
+    .strength-bar {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--border-light);
+      transition: background-color 0.3s ease;
+    }
+    .strength-bar.weak { background-color: var(--danger); }
+    .strength-bar.medium { background-color: var(--warning); }
+    .strength-bar.strong { background-color: var(--success); }
+    .strength-text {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 6px;
+      min-width: 55px;
+      text-align: right;
+    }
+
+    /* Submit Button */
+    .btn-submit {
+      width: 100%;
+      padding: 11.5px 20px;
+      background: var(--gradient-accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 40px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.32);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(99, 102, 241, 0.48);
+    }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit.loading { pointer-events: none; opacity: 0.8; }
+    .spinner {
+      display: none;
+      width: 15px;
+      height: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    .btn-submit.loading .spinner { display: block; }
+    .btn-submit.loading .btn-content { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Social OAuth */
+    .social-btn {
+      flex: 1;
+      padding: 8.5px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .social-btn:hover {
+      background: var(--menu-hover-bg);
+      border-color: var(--accent-glow);
+      color: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Top Corner Controls */
+    .corner-controls {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 50;
+    }
+    .theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .theme-btn:hover {
+      background: var(--accent-primary);
+      color: #fff;
+      transform: rotate(20deg);
+    }
+    .rtl-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      border-radius: 40px;
+      padding: 6px 13px;
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .rtl-btn:hover {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+
+    /* RTL Alignment */
+    [dir="rtl"] .input-box input { padding: 9.5px 38px 9.5px 14px; }
+    [dir="rtl"] .input-box .field-icon { left: auto; right: 13px; }
+    [dir="rtl"] .pass-toggle-btn { right: auto; left: 12px; }
+    [dir="rtl"] .corner-controls { right: auto; left: 22px; }
+    [dir="rtl"] .btn-submit i { transform: scaleX(-1); }
+    [dir="rtl"] .strength-text { margin-left: 0; margin-right: 6px; text-align: left; }
+
+    /* Alert Boxes */
+    .alert-box {
+      display: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 11.5px;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      align-items: center;
+      gap: 8px;
+    }
+    .alert-box.show { display: flex; }
+    .alert-error {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+    }
+    .alert-success {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #10b981;
+    }
+
+    @media (max-width: 480px) {
+      .signup-card {
+        padding: 1.4rem 1.1rem;
+        border-radius: 18px;
+      }
+      .corner-controls {
+        top: 10px;
+        right: 12px;
+      }
+      [dir="rtl"] .corner-controls {
+        left: 12px;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Background Gradients -->
+  <div class="ambient-mesh">
+    <div class="mesh-blob mesh-1"></div>
+    <div class="mesh-blob mesh-2"></div>
+  </div>
+
+  <!-- Animated Print Embellishment Tags -->
+  <div class="floating-stickers">
+    <div class="sticker-badge"><i class="fas fa-tag"></i> Precision Die-Cuts</div>
+    <div class="sticker-badge"><i class="fas fa-palette"></i> PMS Spot Color</div>
+    <div class="sticker-badge"><i class="fas fa-layer-group"></i> BOPP &amp; Metallic</div>
+    <div class="sticker-badge"><i class="fas fa-clock"></i> 48-Hour Dispatch</div>
+  </div>
+
+  <!-- Theme and Direction Switchers -->
+  <div class="corner-controls">
+    <button id="themeToggle" class="theme-btn" title="Toggle Obsidian/Light Mode" aria-label="Toggle theme">
+      <i class="fas fa-sun" id="themeIcon"></i>
+    </button>
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">LTR</button>
+  </div>
+
+  <!-- Signup Form Container -->
+  <main class="signup-wrap">
+    <div class="signup-card">
+
+      <!-- Header Section -->
+      <div class="text-center mb-5">
+        <a href="index.html" class="brand-logo-area">
+          <div class="brand-icon-wrapper">
+            <i class="fas fa-tags"></i>
+          </div>
+          <div class="brand-logo-text font-display">
+            <span>Print</span>Craft
+          </div>
+        </a>
+        <h1 class="text-xl sm:text-2xl font-bold text-[var(--text-main)] font-display">Create Studio Account</h1>
+        <p class="text-xs text-[var(--text-muted)] mt-1 font-normal">
+          Direct wholesale rates, vector cutline verification &amp; instant proofs.
+        </p>
+      </div>
+
+      <!-- Feedback Alerts -->
+      <div id="alertError" class="alert-box alert-error">
+        <i class="fas fa-circle-exclamation shrink-0"></i>
+        <span id="errorMessage">Please resolve the indicated errors.</span>
+      </div>
+      <div id="alertSuccess" class="alert-box alert-success">
+        <i class="fas fa-circle-check shrink-0"></i>
+        <span id="successMessage">Studio account created! Redirecting...</span>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="signupForm" autocomplete="off" novalidate>
+        
+        <!-- Full Name -->
+        <div class="form-group text-left rtl:text-right">
+          <label for="fullName" class="form-label">Full Name or Brand Rep</label>
+          <div class="input-box">
+            <input type="text" id="fullName" placeholder="Alexander Wright" required autocomplete="name">
+            <i class="fas fa-user field-icon"></i>
+          </div>
+        </div>
+
+        <!-- Studio Email -->
+        <div class="form-group text-left rtl:text-right">
+          <label for="email" class="form-label">Work / Studio Email</label>
+          <div class="input-box">
+            <input type="email" id="email" placeholder="alexander@brandstudio.com" required autocomplete="email" inputmode="email">
+            <i class="fas fa-envelope field-icon"></i>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group text-left rtl:text-right">
+          <label for="password" class="form-label">Studio Password</label>
+          <div class="input-box">
+            <input type="password" id="password" placeholder="Minimum 6 characters" required minlength="6" autocomplete="new-password">
+            <i class="fas fa-lock field-icon"></i>
+            <button type="button" class="pass-toggle-btn" id="togglePassword" aria-label="Toggle password visibility">
+              <i class="fas fa-eye" id="eyeIcon1"></i>
+            </button>
+          </div>
+          <!-- Strength Meter -->
+          <div class="password-strength">
+            <div class="strength-bars">
+              <div class="strength-bar" id="bar1"></div>
+              <div class="strength-bar" id="bar2"></div>
+              <div class="strength-bar" id="bar3"></div>
+            </div>
+            <span class="strength-text" id="strengthText">Security</span>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group text-left rtl:text-right">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <div class="input-box">
+            <input type="password" id="confirmPassword" placeholder="Re-enter your password" required autocomplete="new-password">
+            <i class="fas fa-check-double field-icon"></i>
+            <button type="button" class="pass-toggle-btn" id="toggleConfirm" aria-label="Toggle password visibility">
+              <i class="fas fa-eye" id="eyeIcon2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Terms Agreement -->
+        <div class="my-3 text-left rtl:text-right">
+          <label class="flex items-start gap-2 text-[11px] text-[var(--text-muted)] cursor-pointer select-none leading-snug">
+            <input type="checkbox" id="terms" required class="accent-[#6366f1] w-3.5 h-3.5 rounded mt-0.5 shrink-0">
+            <span>I agree to PrintCraft's <a href="guide.html" class="text-[var(--accent-glow)] hover:underline">Manufacturing Guidelines</a> &amp; <a href="#" class="text-[var(--accent-glow)] hover:underline">Terms of Service</a>.</span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit mt-4" id="submitBtn">
+          <div class="spinner"></div>
+          <span class="btn-content inline-flex items-center gap-2">
+            <span>Register Print Account</span>
+            <i class="fas fa-arrow-right text-[10px]"></i>
+          </span>
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="flex items-center my-4 gap-3 text-[10px] text-[var(--text-dim)]">
+        <div class="flex-1 h-px bg-[var(--border-light)]"></div>
+        <span class="uppercase tracking-widest font-semibold">Or Register With</span>
+        <div class="flex-1 h-px bg-[var(--border-light)]"></div>
+      </div>
+
+      <!-- Quick OAuth -->
+      <div class="flex gap-2.5">
+        <button type="button" class="social-btn">
+          <i class="fab fa-google text-[#ea4335]"></i>
+          <span>Google</span>
+        </button>
+        <button type="button" class="social-btn">
+          <i class="fab fa-apple text-sm"></i>
+          <span>Apple</span>
+        </button>
+      </div>
+
+      <!-- Existing Account Footer -->
+      <div class="mt-4 text-center text-[11.5px] text-[var(--text-muted)] pt-3.5 border-t border-[var(--border-light)]">
+        Already registered with PrintCraft? 
+        <a href="login.html" class="text-[var(--accent-glow)] font-semibold hover:underline ml-1">Sign In</a>
+      </div>
+
+    </div>
+
+    <!-- Return to Store Link -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="text-[11px] font-semibold uppercase tracking-widest text-[var(--text-dim)] hover:text-[var(--accent-glow)] transition-colors inline-flex items-center gap-2">
+        <i class="fas fa-arrow-left text-[9px] rtl:rotate-180"></i>
+        <span>Return to PrintCraft Home</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- ===== FORM & PAGE SCRIPTS ===== -->
+  <script>
+    (function() {
+      const html = document.documentElement;
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const rtlToggle = document.getElementById('rtlToggle');
+
+      const signupForm = document.getElementById('signupForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const fullNameInput = document.getElementById('fullName');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmInput = document.getElementById('confirmPassword');
+      const termsInput = document.getElementById('terms');
+
+      const togglePassword = document.getElementById('togglePassword');
+      const eyeIcon1 = document.getElementById('eyeIcon1');
+      const toggleConfirm = document.getElementById('toggleConfirm');
+      const eyeIcon2 = document.getElementById('eyeIcon2');
+
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      const strengthText = document.getElementById('strengthText');
+
+      const alertError = document.getElementById('alertError');
+      const alertSuccess = document.getElementById('alertSuccess');
+      const errorMessage = document.getElementById('errorMessage');
+      const successMessage = document.getElementById('successMessage');
+
+      // 1. Theme Configuration
+      const savedTheme = localStorage.getItem('printcraft-dark-theme') || 'dark';
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          body.classList.add('light-mode');
+          themeIcon.className = 'fas fa-moon';
+          localStorage.setItem('printcraft-dark-theme', 'light');
+        } else {
+          body.classList.remove('light-mode');
+          themeIcon.className = 'fas fa-sun';
+          localStorage.setItem('printcraft-dark-theme', 'dark');
+        }
+      }
+      applyTheme(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const isLight = body.classList.contains('light-mode');
+        applyTheme(isLight ? 'dark' : 'light');
+      });
+
+      // 2. RTL / LTR Configuration
+      const savedDir = localStorage.getItem('printcraft-dir') || 'ltr';
+      function applyDirection(dir) {
+        html.setAttribute('dir', dir);
+        rtlToggle.textContent = dir === 'rtl' ? 'RTL' : 'LTR';
+        localStorage.setItem('printcraft-dir', dir);
+      }
+      applyDirection(savedDir);
+
+      rtlToggle.addEventListener('click', () => {
+        const currentDir = html.getAttribute('dir') || 'ltr';
+        applyDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      });
+
+      // 3. Password Visibility Toggles
+      togglePassword.addEventListener('click', () => {
+        const isPass = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPass ? 'text' : 'password');
+        eyeIcon1.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+      });
+
+      toggleConfirm.addEventListener('click', () => {
+        const isPass = confirmInput.getAttribute('type') === 'password';
+        confirmInput.setAttribute('type', isPass ? 'text' : 'password');
+        eyeIcon2.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+      });
+
+      // 4. Password Strength Calculation
+      function evaluateStrength(val) {
+        let score = 0;
+        if (val.length >= 6) score++;
+        if (val.length >= 10) score++;
+        if (/[A-Z]/.test(val) && /[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+        return Math.min(score, 3);
+      }
+
+      passwordInput.addEventListener('input', function() {
+        const val = this.value;
+        const score = evaluateStrength(val);
+
+        bar1.className = 'strength-bar';
+        bar2.className = 'strength-bar';
+        bar3.className = 'strength-bar';
+
+        if (val.length === 0) {
+          strengthText.textContent = 'Security';
+          return;
+        }
+
+        if (score === 1) {
+          bar1.classList.add('weak');
+          strengthText.textContent = 'Weak';
+          strengthText.style.color = 'var(--danger)';
+        } else if (score === 2) {
+          bar1.classList.add('medium');
+          bar2.classList.add('medium');
+          strengthText.textContent = 'Medium';
+          strengthText.style.color = 'var(--warning)';
+        } else if (score >= 3) {
+          bar1.classList.add('strong');
+          bar2.classList.add('strong');
+          bar3.classList.add('strong');
+          strengthText.textContent = 'Strong';
+          strengthText.style.color = 'var(--success)';
+        }
+      });
+
+      // 5. Validation Alert Handler
+      function showAlert(isError, msg) {
+        alertError.classList.remove('show');
+        alertSuccess.classList.remove('show');
+
+        if (isError) {
+          errorMessage.textContent = msg;
+          alertError.classList.add('show');
+        } else {
+          successMessage.textContent = msg;
+          alertSuccess.classList.add('show');
+        }
+      }
+
+      // 6. Form Submission Simulation
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alertError.classList.remove('show');
+        alertSuccess.classList.remove('show');
+
+        const fullName = fullNameInput.value.trim();
+        const email = emailInput.value.trim();
+        const pass = passwordInput.value;
+        const confirm = confirmInput.value;
+
+        if (!fullName) {
+          showAlert(true, 'Please enter your full name or company representative name.');
+          fullNameInput.focus();
+          return;
+        }
+        if (!email || !email.includes('@') || !email.includes('.')) {
+          showAlert(true, 'Please provide a valid studio email address.');
+          emailInput.focus();
+          return;
+        }
+        if (!pass || pass.length < 6) {
+          showAlert(true, 'Password must be at least 6 characters.');
+          passwordInput.focus();
+          return;
+        }
+        if (pass !== confirm) {
+          showAlert(true, 'The confirmation password does not match.');
+          confirmInput.focus();
+          return;
+        }
+        if (!termsInput.checked) {
+          showAlert(true, 'Please accept the Manufacturing Guidelines to continue.');
+          termsInput.focus();
+          return;
+        }
+
+        submitBtn.classList.add('loading');
+
+        setTimeout(() => {
+          showAlert(false, 'Studio account initialized! Redirecting to login...');
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1400);
+        }, 1100);
+      });
+    })();
+  </script>
+</body>
+</html>

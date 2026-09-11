@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintCraft · Sticker & Custom Label Printing Shop</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        mono: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Same Exact Font Style from Sweet Crumbs: Playfair Display + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 74px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #151d30;
+            --bg-inverted: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --accent-light: #1e1b4b;
+            --border-color: #1e293b;
+            --border-light: rgba(99, 102, 241, 0.25);
+            --nav-bg: rgba(11, 15, 25, 0.90);
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.14);
+            --shadow-color: rgba(99, 102, 241, 0.16);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-inverted: #0b0f19;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --nav-bg: rgba(248, 250, 252, 0.94);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --shadow-color: rgba(99, 102, 241, 0.1);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        /* ===== TYPOGRAPHY (MATCHING SWEET CRUMBS EXACTLY) ===== */
+        h1, h2, h3, .brand-logo, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        p {
+            line-height: 1.7;
+        }
+        .font-mono-spec {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== BRAND LOGO ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PILL NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 28px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 64px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-pill:hover {
+            color: var(--text-main);
+            background: var(--menu-hover-bg);
+        }
+
+        .nav-pill.active {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+
+        .dropdown-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-pill .nav-pill {
+            padding-right: 14px;
+        }
+        .dropdown-pill .nav-pill .fa-chevron-down {
+            font-size: 8px;
+            margin-left: 2px;
+            opacity: 0.6;
+            transition: transform 0.25s ease;
+        }
+        .dropdown-pill:hover .nav-pill .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown-pill-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 180px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 6px 4px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 100;
+        }
+        .dropdown-pill:hover .dropdown-pill-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-pill-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-pill-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-glow);
+            padding-left: 24px;
+        }
+        .dropdown-pill-item.active {
+            color: var(--accent-glow);
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .dropdown-pill-item:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 40px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-solid {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            border: none;
+        }
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(99, 102, 241, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== TOGGLES ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover {
+            color: var(--accent-glow);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== DUAL-IMAGE HERO SECTION ===== */
+        .hero-double {
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 60px 0;
+            background: radial-gradient(circle at 75% 25%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
+                        radial-gradient(circle at 15% 75%, rgba(6, 182, 212, 0.14) 0%, transparent 50%);
+        }
+
+        .dual-card {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+        }
+        .dual-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 32px 60px -10px rgba(99, 102, 241, 0.25);
+        }
+
+        .floating-glass-chip {
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 12px 18px;
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.45);
+        }
+        body.light-mode .floating-glass-chip {
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12 !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.25) !important;
+            padding-top: 60px;
+            color: #f8fafc !important;
+        }
+        footer h4 {
+            color: #f8fafc !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        footer a, footer li, footer span:not(.brand-logo span) {
+            color: #94a3b8 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: var(--accent-glow) !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(99, 102, 241, 0.25) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #94a3b8 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: var(--gradient-accent) !important;
+            border-color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR                                                       -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+
+            <!-- Desktop Pill Navigation -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="nav-pills">
+                    <div class="dropdown-pill">
+                        <button class="nav-pill active" id="home-pill-btn">
+                            Home <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-pill-menu">
+                            <a href="index.html" class="dropdown-pill-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-pill-item active">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-pill">About</a>
+                    <a href="products.html" class="nav-pill">Products</a>
+                    <a href="materials.html" class="nav-pill">Materials</a>
+                    <a href="pricing" class="nav-pill">pricing</a>
+                    <a href="guide.html" class="nav-pill">guide</a>
+                    <a href="contact.html" class="nav-pill">Contact</a>
+                </div>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-glow)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link active" onclick="closeMenu()">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()">About</a>
+            <a href="products.html" class="mobile-link" onclick="closeMenu()">Products</a>
+            <a href="materials.html" class="mobile-link" onclick="closeMenu()">Materials</a>
+            <a href="pricing" class="mobile-link" onclick="closeMenu()">pricing</a>
+            <a href="guide.html" class="mobile-link" onclick="closeMenu()">guide</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-user-plus mr-2"></i> Signup
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-file-invoice-dollar mr-2"></i> Request a Quote
+            </a>
+        </div>
+    </div>
+
+<!-- ============================================================ -->
+<!-- FULL VIEWPORT HERO SECTION (FITS 100VH)                      -->
+<!-- ============================================================ -->
+<section id="home" class="relative w-full h-auto lg:h-screen lg:max-h-screen flex items-center justify-center overflow-hidden py-12 lg:py-4">
+    
+    <!-- Ambient Background Layer -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none">
+        <div class="hero-bg-grid absolute inset-0 opacity-20"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 -right-40 w-[30rem] h-[30rem] bg-cyan-500/15 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+            
+            <!-- Left Content Column -->
+            <div class="lg:col-span-6 flex flex-col items-start text-left rtl:text-right space-y-4 xl:space-y-5">
+                
+                <!-- Eyebrow Tag -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+                    <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Dual-Tier Print Architecture</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-[var(--text-main)] font-display">
+                    Crafting iconic stickers <br />
+                    and labels that <br />
+                    <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">demand attention.</span>
+                </h1>
+
+                <!-- Supporting Description -->
+                <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-xl font-normal leading-relaxed">
+                    Pairing artisanal tactile die-cuts with industrial high-speed roll manufacturing. From boutique cosmetic packaging to heavy-duty equipment labeling, we calibrate every micron of adhesive precision.
+                </p>
+
+                <!-- Feature Bullet Points -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-0.5 w-full max-w-lg text-sm text-[var(--text-main)]">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-5 h-5 rounded-full bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                            <i class="fas fa-check text-[9px] text-[var(--accent-glow)]"></i>
+                        </div>
+                        <span class="font-medium text-xs">Certified Food &amp; Cosmetic Safe</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-5 h-5 rounded-full bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                            <i class="fas fa-check text-[9px] text-[var(--accent-glow)]"></i>
+                        </div>
+                        <span class="font-medium text-xs">Waterproof &amp; UV Stable</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-5 h-5 rounded-full bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                            <i class="fas fa-check text-[9px] text-[var(--accent-glow)]"></i>
+                        </div>
+                        <span class="font-medium text-xs">Laser Precision Die-Cutting</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-5 h-5 rounded-full bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                            <i class="fas fa-check text-[9px] text-[var(--accent-glow)]"></i>
+                        </div>
+                        <span class="font-medium text-xs">Free Automated PDF Proofs</span>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 w-full sm:w-auto">
+                    <a href="products.html" class="btn btn-solid !py-2.5 !px-6 sm:!py-3 sm:!px-7 text-xs tracking-wider shadow-lg">
+                        <span>Explore Catalog</span>
+                        <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline !py-2.5 !px-6 sm:!py-3 sm:!px-7 text-xs tracking-wider">
+                        <i class="fas fa-swatchbook text-[11px] text-[var(--accent-glow)]"></i>
+                        <span>Free Sample Swatch</span>
+                    </a>
+                </div>
+
+                <!-- Review Snippet -->
+                <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-light)] w-full max-w-lg">
+                    <div class="flex text-amber-400 text-xs">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="text-xs text-[var(--text-muted)]">
+                        <span class="text-[var(--text-main)] font-semibold">4.9/5</span> rating based on 3,800+ bespoke prints.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Visual Column -->
+            <div class="lg:col-span-6 relative mt-6 lg:mt-0">
+                
+                <!-- Ambient Glow Behind Cards -->
+                <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/25 to-cyan-500/20 rounded-[40px] filter blur-3xl -z-10 opacity-80"></div>
+
+                <!-- Double Grid Container -->
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+                    
+                    <!-- Primary Main Card -->
+                    <div class="sm:col-span-7 relative">
+                        <div class="dual-card group bg-[var(--bg-card)] rounded-2xl overflow-hidden border border-[var(--border-light)] shadow-2xl">
+                            <div class="relative overflow-hidden">
+                                <img 
+                                    src="img/st6.webp" 
+                                    alt="Custom Vinyl Stickers in Production" 
+                                    class="w-full h-[220px] sm:h-[300px] lg:h-[320px] xl:h-[360px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-color,#000)]/80 via-transparent to-transparent"></div>
+                            </div>
+                            <div class="p-3.5 sm:p-4 flex items-center justify-between">
+                                <div>
+                                    <div class="text-[11px] font-semibold uppercase tracking-wider text-[var(--accent-glow)]">Series 01</div>
+                                    <div class="text-xs sm:text-sm font-bold text-[var(--text-main)] font-display mt-0.5">Heavyweight Vinyl Die-Cuts</div>
+                                </div>
+                                <span class="text-[10px] font-mono-spec px-2 py-0.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--text-muted)]">6 Mil</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Left Tag -->
+                        <div class="floating-glass-chip absolute -bottom-3 -left-3 hidden sm:flex items-center gap-2.5 bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-light)] p-2.5 rounded-xl shadow-lg">
+                            <div class="w-7 h-7 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                                <i class="fas fa-droplet text-[var(--accent-glow)] text-[10px]"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-bold text-[var(--text-main)] leading-tight">100% Waterproof</div>
+                                <div class="text-[9px] text-[var(--text-muted)]">Marine Vinyl Standard</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Offset Card -->
+                    <div class="sm:col-span-5 relative sm:-mt-6">
+                        <div class="dual-card group bg-[var(--bg-card)] rounded-2xl overflow-hidden border border-[var(--border-light)] shadow-2xl">
+                            <div class="relative overflow-hidden">
+                                <img 
+                                    src="img/st7.webp" 
+                                    alt="Commercial Bottle and Packaging Roll Labels" 
+                                    class="w-full h-[180px] sm:h-[240px] lg:h-[260px] xl:h-[290px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-color,#000)]/80 via-transparent to-transparent"></div>
+                            </div>
+                            <div class="p-3 flex flex-col">
+                                <span class="text-[10px] font-semibold uppercase tracking-wider text-[var(--accent-glow)]">Series 02</span>
+                                <span class="text-xs font-bold text-[var(--text-main)] font-display mt-0.5">Commercial Roll Labels</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Metric Pill -->
+                        <div class="floating-glass-chip absolute -top-3 -right-2 hidden sm:flex items-center gap-1.5 bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-light)] px-2.5 py-1 rounded-full shadow-lg">
+                            <i class="fas fa-bolt text-[var(--accent-glow)] text-[10px]"></i>
+                            <span class="text-[9px] font-bold text-[var(--text-main)] uppercase tracking-wider">48-Hr Dispatch</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- ============================================================ -->
+    <!-- 1. STATS & CLIENT TRUST BANNER (~75 LINES)                   -->
+    <!-- ============================================================ -->
+    <section class="w-full py-16 border-y border-[var(--border-light)] bg-[var(--bg-secondary)] relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-light)] rtl:divide-x-reverse">
+                <div class="flex flex-col items-center pt-6 sm:pt-0">
+                    <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-main)] font-display tracking-tight">12.8M+</span>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-semibold mt-2">Labels Manufactured</span>
+                    <p class="text-[11px] text-[var(--text-dim)] mt-1 font-mono-spec">Industrial &amp; Retail Combined</p>
+                </div>
+                <div class="flex flex-col items-center pt-6 sm:pt-0">
+                    <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-main)] font-display tracking-tight">99.8%</span>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-semibold mt-2">Color Match Accuracy</span>
+                    <p class="text-[11px] text-[var(--text-dim)] mt-1 font-mono-spec">Calibrated Delta E &lt; 1.5</p>
+                </div>
+                <div class="flex flex-col items-center pt-6 sm:pt-0">
+                    <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-main)] font-display tracking-tight">48 Hrs</span>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-semibold mt-2">Express Turnaround</span>
+                    <p class="text-[11px] text-[var(--text-dim)] mt-1 font-mono-spec">Rapid Automated Proofing</p>
+                </div>
+                <div class="flex flex-col items-center pt-6 sm:pt-0">
+                    <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-main)] font-display tracking-tight">4,200+</span>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-semibold mt-2">Active Global Brands</span>
+                    <p class="text-[11px] text-[var(--text-dim)] mt-1 font-mono-spec">From Indie to Fortune 500</p>
+                </div>
+            </div>
+            <div class="mt-14 pt-10 border-t border-[var(--border-light)] flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <span class="text-lg md:text-xl font-bold font-display tracking-widest uppercase text-[var(--text-main)]">AURA COSMETICS</span>
+                <span class="text-lg md:text-xl font-bold font-display tracking-widest uppercase text-[var(--text-main)]">NORDIC BREWS</span>
+                <span class="text-lg md:text-xl font-bold font-display tracking-widest uppercase text-[var(--text-main)]">VORTEX LABS</span>
+                <span class="text-lg md:text-xl font-bold font-display tracking-widest uppercase text-[var(--text-main)]">LUMEN ROASTERS</span>
+                <span class="text-lg md:text-xl font-bold font-display tracking-widest uppercase text-[var(--text-main)]">HEXA APPAREL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. LUXURY PRODUCT CATEGORIES SHOWCASE (~78 LINES)            -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 bg-[var(--bg-color)] relative">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[var(--accent-glow)] mb-3">
+                        <i class="fas fa-layer-group"></i> Master Print Range
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display leading-tight">
+                        Curated adhesives designed for standout products.
+                    </h2>
+                </div>
+                <a href="products.html" class="btn btn-outline self-start md:self-auto !py-2.5 !px-6 text-xs">
+                    View Full Catalog <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="dual-card bg-[var(--bg-card)] group p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-56 rounded-xl overflow-hidden mb-6 relative">
+                            <img src="img/st5.webp" alt="Die-cut stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <span class="absolute top-3 left-3 bg-[var(--bg-secondary)]/90 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-[var(--border-light)] text-[var(--text-main)]">Matte &amp; Gloss</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] font-display">Bespoke Vinyl Die-Cuts</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2.5 leading-relaxed">Laser-contoured to exact artwork outlines. Rated for 5-year outdoor durability with scratch-resistant thick laminate backing.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs">
+                        <span class="font-mono-spec text-[var(--accent-glow)] font-bold">From $0.18 / unit</span>
+                        <a href="products.html" class="text-[var(--text-main)] font-semibold hover:text-[var(--accent-primary)] inline-flex items-center gap-1.5">Configure <i class="fas fa-chevron-right text-[8px] rtl:rotate-180"></i></a>
+                    </div>
+                </div>
+                <div class="dual-card bg-[var(--bg-card)] group p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-56 rounded-xl overflow-hidden mb-6 relative">
+                            <img src="img/st8.webp" alt="Roll Labels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <span class="absolute top-3 left-3 bg-[var(--bg-secondary)]/90 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-[var(--border-light)] text-[var(--text-main)]">Industrial Core</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] font-display">High-Speed Roll Labels</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2.5 leading-relaxed">Engineered for high-volume automated bottle, jar, and pouch applicators with custom unwind orientations and adhesive grades.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs">
+                        <span class="font-mono-spec text-[var(--accent-glow)] font-bold">From $0.04 / unit</span>
+                        <a href="products.html" class="text-[var(--text-main)] font-semibold hover:text-[var(--accent-primary)] inline-flex items-center gap-1.5">Configure <i class="fas fa-chevron-right text-[8px] rtl:rotate-180"></i></a>
+                    </div>
+                </div>
+                <div class="dual-card bg-[var(--bg-card)] group p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-56 rounded-xl overflow-hidden mb-6 relative">
+                            <img src="img/laminate-for-digital-print.jpg" alt="Foil Specialty Labels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <span class="absolute top-3 left-3 bg-[var(--bg-secondary)]/90 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-[var(--border-light)] text-[var(--text-main)]">Luxury Embellished</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] font-display">Holographic &amp; Hot Foils</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2.5 leading-relaxed">Prismatic reflection, gold metallic stamping, and raised dimensional UV varnish formulated to elevate premium luxury merchandise.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs">
+                        <span class="font-mono-spec text-[var(--accent-glow)] font-bold">From $0.32 / unit</span>
+                        <a href="products.html" class="text-[var(--text-main)] font-semibold hover:text-[var(--accent-primary)] inline-flex items-center gap-1.5">Configure <i class="fas fa-chevron-right text-[8px] rtl:rotate-180"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+<!-- 3. MATERIAL & TECHNICAL SPECIFICATIONS                       -->
+<!-- ============================================================ -->
+<section class="w-full py-24 bg-[var(--bg-secondary)] border-y border-[var(--border-light)] relative">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-bold">Substrate Mastery</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display mt-2">Engineered Material Matrix</h2>
+            <p class="text-sm text-[var(--text-muted)] mt-3">Every substrate is laboratory-graded for tensile endurance, chemical resistance, and thermal adhesion tolerances.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: BOPP Polypropylene -->
+            <article class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-glow)] hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)] mb-5">
+                        <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display">BOPP Polypropylene</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Impervious to oils, condensation, and mechanical abrasion. Ideal for chilled beverage and cosmetic tubes.</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-[11px] font-mono-spec text-[var(--text-dim)]">Temp: -40°C to +95°C</div>
+            </article>
+
+            <!-- Card 2: FSC Kraft & Vellum -->
+            <article class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-glow)] hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)] mb-5">
+                        <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 009-9c0-4.97-4.03-9-9-9-4.97 0-9 4.03-9 9 0 3.5 2 6.5 5 8m4-8c-2 2-4 5-4 9" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display">FSC Kraft &amp; Vellum</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">100% recycled unbleached wood pulp with rich organic fibrous tactile depth. Ideal for organic artisan packaging.</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-[11px] font-mono-spec text-[var(--text-dim)]">100% Compostable Liner</div>
+            </article>
+
+            <!-- Card 3: Cast Vinyl -->
+            <article class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-glow)] hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)] mb-5">
+                        <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display">Cast Vinyl (6.0 Mil)</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Zero-shrink dimensional cast film paired with high-tack acrylic pressure glue. Built for heavy automotive and hardware use.</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-[11px] font-mono-spec text-[var(--text-dim)]">UV Life: Up to 7 Years</div>
+            </article>
+
+            <!-- Card 4: Prismatic Rainbow Film -->
+            <article class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-glow)] hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/15 border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)] mb-5">
+                        <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.75">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display">Prismatic Rainbow Film</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Micro-embossed light-diffracting metalized PET. Vibrant chromatic shift under sunlight without legibility loss.</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-[11px] font-mono-spec text-[var(--text-dim)]">Gauge: 50 Micron Core</div>
+            </article>
+        </div>
+    </div>
+</section>
+
+    <!-- ============================================================ -->
+    <!-- 4. FOUR-STEP PRECISION WORKFLOW (~76 LINES)                  -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 bg-[var(--bg-color)] relative">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-bold">Flawless Delivery</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display mt-2">The Production Journey</h2>
+                <p class="text-sm text-[var(--text-muted)] mt-3">From digital proof verification to finished pallet dispatches in four seamless checkpoints.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <div class="relative bg-[var(--bg-card)] p-6 rounded-2xl border border-[var(--border-light)] flex flex-col">
+                    <span class="text-3xl font-extrabold text-[var(--accent-primary)]/40 font-mono-spec">01</span>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display mt-3">Vector Upload &amp; Audit</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Submit AI, PDF, or EPS vector files. Our automated engine analyzes cutlines, bleed margins, and minimum line widths.</p>
+                    <div class="mt-auto pt-4 text-[11px] text-[var(--accent-glow)] font-semibold"><i class="fas fa-clock mr-1"></i> Instant Feedback</div>
+                </div>
+                <div class="relative bg-[var(--bg-card)] p-6 rounded-2xl border border-[var(--border-light)] flex flex-col">
+                    <span class="text-3xl font-extrabold text-[var(--accent-primary)]/40 font-mono-spec">02</span>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display mt-3">Proof Approval</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Receive high-resolution digital mockups illustrating your peel line, layers, and true PMS color separations within 2 hours.</p>
+                    <div class="mt-auto pt-4 text-[11px] text-[var(--accent-glow)] font-semibold"><i class="fas fa-check-double mr-1"></i> 100% Guaranteed</div>
+                </div>
+                <div class="relative bg-[var(--bg-card)] p-6 rounded-2xl border border-[var(--border-light)] flex flex-col">
+                    <span class="text-3xl font-extrabold text-[var(--accent-primary)]/40 font-mono-spec">03</span>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display mt-3">Indigo Print &amp; Laser Cut</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Printed on 7-color digital press arrays at 1200 DPI resolution, followed by high-speed galvanometer optical laser cutting.</p>
+                    <div class="mt-auto pt-4 text-[11px] text-[var(--accent-glow)] font-semibold"><i class="fas fa-microchip mr-1"></i> Precision Cut</div>
+                </div>
+                <div class="relative bg-[var(--bg-card)] p-6 rounded-2xl border border-[var(--border-light)] flex flex-col">
+                    <span class="text-3xl font-extrabold text-[var(--accent-primary)]/40 font-mono-spec">04</span>
+                    <h3 class="text-lg font-bold text-[var(--text-main)] font-display mt-3">Quality Inspection</h3>
+                    <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Every roll and bundle undergoes computer-vision registration checks and heat-sealed shrink wrapping before dispatch.</p>
+                    <div class="mt-auto pt-4 text-[11px] text-[var(--accent-glow)] font-semibold"><i class="fas fa-truck-fast mr-1"></i> 48-Hour Dispatch</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. TESTIMONIALS & CLIENT RATINGS (~72 LINES)                 -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 bg-[var(--bg-secondary)] border-y border-[var(--border-light)] relative">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-[var(--accent-glow)] font-bold">Client Voices</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display mt-2">Trusted by fast-growing brands</h2>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <span class="text-xs font-bold text-[var(--text-main)]">4.9/5 Average Review Score</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] flex flex-col justify-between">
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed italic">"PrintCraft revamped our entire beverage bottle packaging. The matte BOPP roll labels pass through our automated line with zero jams, and the color vibrancy is spot on."</p>
+                    <div class="mt-8 pt-4 border-t border-[var(--border-color)] flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-500 flex items-center justify-center font-bold text-xs text-white">MK</div>
+                        <div>
+                            <div class="text-xs font-bold text-[var(--text-main)]">Marcus Kane</div>
+                            <div class="text-[10px] text-[var(--text-dim)]">Head of Packaging · Nordica Soda</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] flex flex-col justify-between">
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed italic">"The metallic gold foil accents on our skincare jars are breath-taking. Customer unboxing reviews frequently praise the tactile foil finish. Their team is truly world-class."</p>
+                    <div class="mt-8 pt-4 border-t border-[var(--border-color)] flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 to-emerald-500 flex items-center justify-center font-bold text-xs text-white">SL</div>
+                        <div>
+                            <div class="text-xs font-bold text-[var(--text-main)]">Sophia Lin</div>
+                            <div class="text-[10px] text-[var(--text-dim)]">Creative Director · Vesper Botanicals</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] flex flex-col justify-between">
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed italic">"We run thousands of custom die-cut vinyl packs for tech summits. The cut edges are razor sharp, cleanly peeled, and resistant to scuffing on laptops and outdoor equipment."</p>
+                    <div class="mt-8 pt-4 border-t border-[var(--border-color)] flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center font-bold text-xs text-white">DR</div>
+                        <div>
+                            <div class="text-xs font-bold text-[var(--text-main)]">Devon Reed</div>
+                            <div class="text-[10px] text-[var(--text-dim)]">Brand Lead · Apex Developer Network</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+<!-- 6. HIGH-IMPACT ENTERPRISE CONVERSION CTA (FULL-WIDTH SPLIT)  -->
+<!-- ============================================================ -->
+<section class="w-full py-16 sm:py-20 lg:py-24 bg-[var(--bg-color)] relative overflow-hidden">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="relative overflow-hidden rounded-3xl border border-[var(--border-light)] bg-gradient-to-br from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] p-8 sm:p-12 lg:p-16 shadow-2xl backdrop-blur-sm">
+            
+            <!-- Ambient Lighting Glows -->
+            <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[var(--accent-glow)]/15 blur-3xl"></div>
+            <div class="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[var(--accent-primary)]/10 blur-3xl"></div>
+
+            <!-- Two-Column Balanced Grid Layout -->
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Left Column: Core Message & CTAs -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 self-start rounded-full border border-[var(--border-light)] bg-[var(--accent-primary)]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--accent-glow)]">
+                        <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+                        Start Your Print Run
+                    </div>
+
+                    <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--text-main)] font-display sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+                        Ready to imprint your identity with absolute tactile perfection?
+                    </h2>
+
+                    <p class="mt-4 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
+                        Request a complimentary physical sample box packed with 20+ finishes, or upload your artwork now for an instant automated vector feasibility evaluation.
+                    </p>
+
+                    <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3.5">
+                        <a href="contact.html" class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[var(--accent-glow)] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--bg-color)] transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[var(--accent-glow)]/20 active:scale-[0.98]">
+                            <span>Request Free Sample Kit</span>
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </a>
+
+                        <a href="products.html" class="inline-flex items-center justify-center gap-2.5 rounded-xl border border-[var(--border-light)] bg-[var(--bg-card)]/60 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--text-main)] backdrop-blur-md transition-all duration-300 hover:border-[var(--accent-glow)] hover:bg-[var(--bg-card)] hover:text-[var(--accent-glow)] active:scale-[0.98]">
+                            <span>Upload Artwork &amp; Quote</span>
+                            <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Trust Points -->
+                    <div class="mt-8 pt-6 border-t border-[var(--border-color)]/60 flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-[var(--text-dim)]">
+                        <span class="inline-flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Zero Plate Fees
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Instant PDF Proofs
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Tier Volume Discounts
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Sample Box & Production Preview -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                    <!-- Metric Card 1 -->
+                    <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-5 backdrop-blur-md">
+                        <div class="w-9 h-9 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold font-display text-[var(--text-main)]">48 Hours</div>
+                        <p class="text-xs text-[var(--text-muted)] mt-1">Standard turnaround time for custom production runs.</p>
+                    </div>
+
+                    <!-- Metric Card 2 -->
+                    <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-5 backdrop-blur-md">
+                        <div class="w-9 h-9 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold font-display text-[var(--text-main)]">2400 DPI</div>
+                        <p class="text-xs text-[var(--text-muted)] mt-1">High-definition micro-droplet pigment resolution.</p>
+                    </div>
+
+                    <!-- Spec Box Full Width Bottom -->
+                    <div class="col-span-2 rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/50 p-5 backdrop-blur-md flex items-center justify-between">
+                        <div>
+                            <div class="text-xs font-bold text-[var(--text-main)]">Sample Pack Inclusions</div>
+                            <div class="text-[11px] text-[var(--text-muted)] mt-0.5">Metallic foils, holographic, soft-touch matte & kraft</div>
+                        </div>
+                        <span class="rounded-lg bg-[var(--accent-glow)]/15 px-2.5 py-1 text-[11px] font-mono-spec font-bold text-[var(--accent-glow)]">FREE</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Info -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #f8fafc !important;">
+                            <span>Print</span>Craft
+                        </div>
+                    </a>
+                    <p class="text-[#94a3b8] text-sm leading-relaxed mt-4">Precision custom label printing, die-cut stickers, and commercial adhesive solutions engineered for retail packaging, hardware, and creative brands.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://www.instagram.com/" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.pinterest.com/" class="social-circle"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Home</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Products</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Materials</a></li>
+                        <li><a href="pricing" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> pricing</a></li>
+                        <li><a href="guide.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> guide</a></li>
+                        <li><a href="contact.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Contact &amp; Quotes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Offerings -->
+                <div>
+                    <h4>Print Offerings</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Die-Cut Vinyl Stickers</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Roll Labels for Bottles &amp; Jars</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Industrial Barcode Labels</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Removable Wall Decals</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Holographic &amp; Metallic Foils</a></li>
+                    </ul>
+                </div>
+
+                <!-- Studio Visit -->
+                <div>
+                    <h4>Production Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">840 Printmakers Row, Suite 400, NY 10013</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="tel:+15552837465">+1 (555) 774-6832</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="mailto:quotes@printcraftstudio.com">quotes@printcraftstudio.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">Mon–Fri 8am–6pm · Bulk Dispatch Daily</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-[rgba(99,102,241,0.18)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#64748b]">&copy; 2026 <span class="text-[var(--accent-glow)] font-semibold">PrintCraft</span> Studio. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Terms</a>
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Privacy</a>
+                    <a href="guide.html" class="text-[#64748b] hover:text-[var(--accent-glow)]">Artwork Guidelines</a>
+                </div>
+            </div>
+
+            <div class="text-center pb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[#64748b] text-xs font-semibold uppercase tracking-widest hover:text-[var(--accent-glow)]">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileBtn) mobileBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = closeMenu;
+        if (drawerOverlay) drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // Theme Toggle (Obsidian Dark / Light)
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('printcraft-dark-theme');
+        const isLight = savedTheme === 'light';
+
+        function setTheme(light) {
+            if (light) {
+                document.body.classList.add('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('printcraft-dark-theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('printcraft-dark-theme', 'dark');
+            }
+        }
+        setTheme(isLight);
+
+        function toggleTheme() {
+            const currentlyLight = document.body.classList.contains('light-mode');
+            setTheme(!currentlyLight);
+        }
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // Direction Toggle (RTL / LTR)
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL';
+            }
+        }
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // Mobile Dropdown Accordion
+        const homeToggle = document.getElementById('mobile-home-toggle');
+        const homeItems = document.getElementById('mobile-home-items');
+        if (homeToggle && homeItems) {
+            homeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                homeItems.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us · PrintCraft Studio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        mono: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 74px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #151d30;
+            --bg-inverted: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --accent-light: #1e1b4b;
+            --border-color: #1e293b;
+            --border-light: rgba(99, 102, 241, 0.25);
+            --nav-bg: rgba(11, 15, 25, 0.90);
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.14);
+            --shadow-color: rgba(99, 102, 241, 0.16);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-inverted: #0b0f19;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --nav-bg: rgba(248, 250, 252, 0.94);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --shadow-color: rgba(99, 102, 241, 0.1);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, .brand-logo, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        p {
+            line-height: 1.7;
+        }
+
+        /* ===== BRAND LOGO ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PILL NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 28px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 64px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-pill:hover {
+            color: var(--text-main);
+            background: var(--menu-hover-bg);
+        }
+
+        .nav-pill.active {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+
+        .dropdown-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-pill .nav-pill {
+            padding-right: 14px;
+        }
+        .dropdown-pill .nav-pill .fa-chevron-down {
+            font-size: 8px;
+            margin-left: 2px;
+            opacity: 0.6;
+            transition: transform 0.25s ease;
+        }
+        .dropdown-pill:hover .nav-pill .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown-pill-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 180px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 6px 4px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 100;
+        }
+        .dropdown-pill:hover .dropdown-pill-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-pill-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-pill-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-glow);
+            padding-left: 24px;
+        }
+        .dropdown-pill-item.active {
+            color: var(--accent-glow);
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .dropdown-pill-item:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 40px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-solid {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            border: none;
+        }
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(99, 102, 241, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== TOGGLES ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* ===== VIEWPORT HERO BANNER ===== */
+        .hero-banner-full {
+            min-height: calc(100vh - 74px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 24px;
+            background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+                        var(--bg-color);
+            overflow: hidden;
+        }
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+            background-size: 44px 44px;
+            pointer-events: none;
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover {
+            color: var(--accent-glow);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12 !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.25) !important;
+            padding-top: 60px;
+            color: #f8fafc !important;
+        }
+        footer h4 {
+            color: #f8fafc !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        footer a, footer li, footer span:not(.brand-logo span) {
+            color: #94a3b8 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: var(--accent-glow) !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(99, 102, 241, 0.25) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #94a3b8 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: var(--gradient-accent) !important;
+            border-color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR (EXACT REPLICATED)                                    -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+
+            <!-- Desktop Pill Navigation -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="nav-pills">
+                    <div class="dropdown-pill">
+                        <button class="nav-pill" id="home-pill-btn">
+                            Home <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-pill-menu">
+                            <a href="index.html" class="dropdown-pill-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-pill-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-pill active">About</a>
+                    <a href="products.html" class="nav-pill">Products</a>
+                    <a href="materials.html" class="nav-pill">Materials</a>
+                    <a href="pricing.html" class="nav-pill">pricing</a>
+                    <a href="guide.html" class="nav-pill">guide</a>
+                    <a href="contact.html" class="nav-pill">Contact</a>
+                </div>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-glow)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link active" onclick="closeMenu()">About</a>
+            <a href="products.html" class="mobile-link" onclick="closeMenu()">Products</a>
+            <a href="materials.html" class="mobile-link" onclick="closeMenu()">Materials</a>
+            <a href="pricing.html" class="mobile-link" onclick="closeMenu()">pricing</a>
+            <a href="guide.html" class="mobile-link" onclick="closeMenu()">guide</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-user-plus mr-2"></i> Signup
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-file-invoice-dollar mr-2"></i> Request a Quote
+            </a>
+        </div>
+    </div>
+
+ <!-- ============================================================ -->
+<!-- FULL VIEWPORT HERO BANNER (NO SCROLL, ZERO OVERFLOW)         -->
+<!-- ============================================================ -->
+<section class="about-hero-banner relative w-full h-[100dvh] max-h-[100dvh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
+    
+    <!-- Background Image Layer -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none">
+        <img 
+            src="img/pic2.webp" 
+            alt="PrintCraft Workshop Background" 
+            class="w-full h-full object-cover object-center"
+            loading="eager"
+        />
+        <!-- 92% Opacity Wash + Gradients for Contrast -->
+        <div class="absolute inset-0 bg-slate-950/92 backdrop-blur-[4px]"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/85"></div>
+        <div class="hero-bg-grid absolute inset-0 opacity-20"></div>
+    </div>
+
+    <!-- Content Container (Calibrated for Zero Scroll) -->
+    <div class="max-w-4xl w-full mx-auto text-center relative z-10 flex flex-col items-center justify-center space-y-3 sm:space-y-4 lg:space-y-5 py-2">
+        
+        <!-- Eyebrow Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)]/85 border border-[var(--border-light)] text-[var(--accent-glow)] backdrop-blur-md shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+            <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Our Heritage &amp; Craftsmanship</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-[var(--text-main)] font-display">
+            Engineered for clarity, <br />
+            printed with <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">uncompromising detail.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-xs sm:text-base lg:text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+            PrintCraft was founded on a simple premise: commercial labels and bespoke die-cuts should deliver archival precision, weatherproof resistance, and effortless brand tactile impact.
+        </p>
+
+        <!-- CTA Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
+            <a href="products.html" class="btn btn-solid !py-2.5 !px-6 sm:!py-3 sm:!px-7 text-xs tracking-wider shadow-lg">
+                <span>Our Capabilities</span>
+                <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+            </a>
+            <a href="contact.html" class="btn btn-outline !py-2.5 !px-6 sm:!py-3 sm:!px-7 text-xs tracking-wider">
+                <i class="fas fa-envelope text-[11px] text-[var(--accent-glow)]"></i>
+                <span>Connect With Us</span>
+            </a>
+        </div>
+
+        <!-- Quick Counter Highlights -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 pt-3 sm:pt-4 border-t border-[var(--border-light)] max-w-3xl w-full mx-auto text-center">
+            <div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--text-main)] font-display">10+</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-[var(--text-muted)] mt-0.5">Years Experience</div>
+            </div>
+            <div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--text-main)] font-display">12M+</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-[var(--text-muted)] mt-0.5">Labels Shipped</div>
+            </div>
+            <div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--text-main)] font-display">99.8%</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-[var(--text-muted)] mt-0.5">Print Accuracy</div>
+            </div>
+            <div>
+                <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--text-main)] font-display">24/7</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-[var(--text-muted)] mt-0.5">Studio Support</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- ============================================================ -->
+    <!-- 1. OUR ORIGIN & FOUNDING PHILOSOPHY (LINES: ~75)             -->
+    <!-- ============================================================ -->
+    <section id="our-story" class="py-24 border-t border-[var(--border-light)] bg-[var(--bg-secondary)]/30 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase">
+                        <i class="fas fa-history text-[9px]"></i> Founded in 2016
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display leading-tight">
+                        Bridging Fine Typography &amp; <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Industrial Adhesives.</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                        What started as a boutique letterpress atelier in New York’s printmaking district evolved into a high-throughput industrial facility. We recognized that luxury brands were forced to choose between artisanal finishing and high-volume consistency.
+                    </p>
+                    <p class="text-sm text-[var(--text-dim)] leading-relaxed">
+                        By integrating multi-wavelength digital laser die-cutters with archival UV curable pigments, we created a closed-loop production space that crafts packaging labels without setup compromise.
+                    </p>
+                    <div class="pt-2 flex items-center gap-6">
+                        <div class="border-l-2 rtl:border-l-0 rtl:border-r-2 border-[var(--accent-primary)] pl-4 rtl:pr-4">
+                            <span class="block text-2xl font-bold font-display text-[var(--text-main)]">100% In-House</span>
+                            <span class="text-[11px] text-[var(--text-dim)] uppercase tracking-wider">Zero Outsourced Production</span>
+                        </div>
+                        <div class="border-l-2 rtl:border-l-0 rtl:border-r-2 border-[var(--accent-glow)] pl-4 rtl:pr-4">
+                            <span class="block text-2xl font-bold font-display text-[var(--text-main)]">ISO 9001</span>
+                            <span class="text-[11px] text-[var(--text-dim)] uppercase tracking-wider">Certified Cleanroom Lab</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-3xl overflow-hidden border border-[var(--border-light)] shadow-2xl shadow-black/50 group">
+                        <img 
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" 
+                            alt="Precision calibration of UV digital print head" 
+                            class="w-full h-[380px] sm:h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-color)] via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-light)] flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-[var(--text-main)]">The Lower Manhattan Cleanroom</div>
+                                <div class="text-[10px] text-[var(--text-muted)] mt-0.5">840 Printmakers Row · 14,000 sq ft Studio</div>
+                            </div>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. CORE PILLARS & ARCHIVAL BENCHMARKS (LINES: ~75)           -->
+    <!-- ============================================================ -->
+    <section id="our-values" class="py-24 relative overflow-hidden">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                    <i class="fas fa-gem text-[9px]"></i> Our Principles
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">Craftsmanship by Design</h2>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] mt-3">Four non-negotiable operational values that steer our ink formulations, substrate selections, and engineering handoffs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-glow)]/40 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[var(--text-main)] mb-2 font-display">Sub-Pixel Proofing</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Every artwork submission undergoes vector path normalization and ink density simulation to prevent bleed on rough stocks.</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest">
+                        Tolerance: ±0.02mm
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-glow)]/40 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[var(--text-main)] mb-2 font-display">Sustainably Sourced</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">FSC-certified face stocks, water-dispersible emulsions, and solvent-free UV-curing inks with minimal VOC emissions.</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest">
+                        FSC &amp; REACH Compliant
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-glow)]/40 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[var(--text-main)] mb-2 font-display">Harsh Environment</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Formulated to resist condensation, UV yellowing, motor oils, and refrigeration frost without adhesive peel or ink wash.</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest">
+                        -40°C to +120°C Stability
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-glow)]/40 hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[var(--text-main)] mb-2 font-display">Dispatch Reliability</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Redundant dual-line production hardware guarantees your commercial release dates are met without delays or rework.</p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest">
+                        99.8% On-Time Record
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. TIMELINE & STUDIO EVOLUTION (LINES: ~75)                  -->
+    <!-- ============================================================ -->
+    <section id="studio-timeline" class="py-24 border-y border-[var(--border-light)] bg-[var(--bg-secondary)]/40 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <i class="fas fa-road text-[9px]"></i> Our Trajectory
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">A Decade of Precision</h2>
+                </div>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md">From a two-person bespoke die shop to an automated cleanroom lab packaging worldwide shipments.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] relative">
+                    <span class="text-3xl font-bold font-display text-[var(--accent-glow)] block mb-3">2016</span>
+                    <h3 class="text-base font-bold text-[var(--text-main)] mb-2">The Downtown Studio</h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Founded on Greene St with a single vintage Heidelberg cylinder press and custom hand-mixed archival inks.</p>
+                    <div class="mt-4 inline-block px-2.5 py-1 rounded bg-[var(--bg-secondary)] text-[10px] text-[var(--text-dim)] uppercase tracking-wider font-semibold">Stage 01</div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] relative">
+                    <span class="text-3xl font-bold font-display text-indigo-400 block mb-3">2019</span>
+                    <h3 class="text-base font-bold text-[var(--text-main)] mb-2">Digital Laser Integration</h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Pioneered galvanometer-driven digital kiss-cutting, eliminating expensive steel dies for small brand runs.</p>
+                    <div class="mt-4 inline-block px-2.5 py-1 rounded bg-[var(--bg-secondary)] text-[10px] text-[var(--text-dim)] uppercase tracking-wider font-semibold">Stage 02</div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] relative">
+                    <span class="text-3xl font-bold font-display text-cyan-400 block mb-3">2023</span>
+                    <h3 class="text-base font-bold text-[var(--text-main)] mb-2">Automated Roll Lines</h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Expanded into continuous-roll BOPP manufacturing line with high-speed automated bottling applicator inspection.</p>
+                    <div class="mt-4 inline-block px-2.5 py-1 rounded bg-[var(--bg-secondary)] text-[10px] text-[var(--text-dim)] uppercase tracking-wider font-semibold">Stage 03</div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--accent-primary)] relative shadow-lg shadow-indigo-500/10">
+                    <span class="text-3xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 block mb-3">Today</span>
+                    <h3 class="text-base font-bold text-[var(--text-main)] mb-2">Global Scale</h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Over 12 million labels produced across 32 countries with same-day digital prepress validation workflows.</p>
+                    <div class="mt-4 inline-block px-2.5 py-1 rounded bg-[var(--menu-hover-bg)] text-[10px] text-[var(--accent-glow)] uppercase tracking-wider font-semibold">Current Era</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. PRODUCTION LAB HARDWARE & MACHINERY (LINES: ~75)          -->
+    <!-- ============================================================ -->
+    <section id="machinery" class="py-24 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase">
+                        <i class="fas fa-cogs text-[9px]"></i> Studio Infrastructure
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display leading-tight">
+                        Machinery That Defines <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Industrial Edge.</span>
+                    </h2>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                        Rather than rely on generic trade-printer brokers, we house our cleanroom hardware under our direct management. We control room temperature, humidity, and curing lamps down to single-digit tolerances.
+                    </p>
+                    <div class="space-y-3.5 pt-2">
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                            <span class="text-xs font-semibold text-[var(--text-main)]">Truepress Jet L350UV+</span>
+                            <span class="text-[10px] uppercase font-bold text-[var(--accent-glow)]">60m/min UV Digital</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                            <span class="text-xs font-semibold text-[var(--text-main)]">SEI Laser Labelmaster</span>
+                            <span class="text-[10px] uppercase font-bold text-[var(--accent-glow)]">Dual Galvo Cutters</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                            <span class="text-xs font-semibold text-[var(--text-main)]">X-Rite eXact Spectro</span>
+                            <span class="text-[10px] uppercase font-bold text-[var(--accent-glow)]">ΔE Color Control &lt; 1.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)]/40 transition-colors">
+                        <div class="w-10 h-10 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-base mb-4">
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Opaque White Underbase</h4>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Over 85% opacity in a single pass ensures bright artwork vibrancy when applied to clear glass or dark substrates.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)]/40 transition-colors">
+                        <div class="w-10 h-10 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-base mb-4">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Cold Pin Curing</h4>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Low-temperature LED ultraviolet arrays secure ink dot placement without stretching heat-sensitive polymer films.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)]/40 transition-colors">
+                        <div class="w-10 h-10 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-base mb-4">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Vision Registration</h4>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">In-line high-resolution CCD cameras adjust cutline paths in real-time, eliminating borders or bleed displacement.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)]/40 transition-colors">
+                        <div class="w-10 h-10 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-base mb-4">
+                            <i class="fas fa-sliders"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Variable Data Engines</h4>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Sequential numbering, unique serialization, and customized QR matrices rendered on the fly during print runs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. LEADERSHIP & MASTER CRAFTSPEOPLE (LINES: ~75)             -->
+    <!-- ============================================================ -->
+    <section id="leadership" class="py-24 border-t border-[var(--border-light)] bg-[var(--bg-secondary)]/30 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <i class="fas fa-users text-[9px]"></i> Studio Guild
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">Specialist Leadership</h2>
+                </div>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md">Our team blends classical Swiss typography standards with industrial chemistry backgrounds.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl overflow-hidden group hover:border-[var(--accent-primary)] transition-all">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="img/co1.webp" 
+                            alt="Elena Rostova, Founder and Master Printmaker" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--accent-glow)]">Founder &amp; Creative Director</span>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mt-1">Elena Rostova</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Former art director with 15 years in fine packaging. Oversees substrate development, embossing calibrations, and color approvals.</p>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl overflow-hidden group hover:border-[var(--accent-primary)] transition-all">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="img/co2.webp" 
+                            alt="Marcus Vance, Head of Pre-Press Engineering" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400">Head of Pre-Press Engineering</span>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mt-1">Marcus Vance</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Chemical engineer specializing in adhesion physics. Manages spectrophotometry curves, substrate primers, and UV cure profiles.</p>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl overflow-hidden group hover:border-[var(--accent-primary)] transition-all">
+                    <div class="h-64 overflow-hidden relative">
+                        <img 
+                            src="img/co3.jpg" 
+                            alt="Sofia Chen, Production Quality Director" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-cyan-400">Production Operations Director</span>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mt-1">Sofia Chen</h3>
+                        <p class="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">Directs dual-line cleanroom workflow and dispatch logistics, maintaining our sub-millimeter die-cut tolerances and rapid turnarounds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. STUDIO VISIT & BESPOKE PROTOTYPE BANNER (LINES: ~75)      -->
+    <!-- ============================================================ -->
+    <section id="studio-cta" class="py-24 relative overflow-hidden">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+            <div class="bg-gradient-to-r from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-24 -top-24 w-96 h-96 bg-[var(--gradient-accent)] opacity-10 blur-3xl rounded-full pointer-events-none"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--menu-hover-bg)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase">
+                            <i class="fas fa-building"></i> Studio Consultations
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[var(--text-main)] leading-tight">
+                            Collaborate with Our Engineers on Your Next <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Packaging Architecture.</span>
+                        </h2>
+                        <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-2xl leading-relaxed">
+                            Schedule a lab walkthrough in Lower Manhattan or request a guided virtual material consultation with our pre-press technical team.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end justify-center gap-4">
+                        <a href="contact.html" class="btn btn-solid !py-4 !px-8 text-xs tracking-wider shadow-lg w-full text-center">
+                            <span>Book Consultation</span>
+                            <i class="fas fa-calendar-check text-[10px] rtl:rotate-180"></i>
+                        </a>
+                        <a href="guide.html" class="btn btn-outline !py-4 !px-8 text-xs tracking-wider w-full text-center">
+                            <i class="fas fa-layer-group text-[11px] text-[var(--accent-glow)]"></i>
+                            <span>Browse Substrates</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER (EXACT REPLICATED)                                    -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Info -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #f8fafc !important;">
+                            <span>Print</span>Craft
+                        </div>
+                    </a>
+                    <p class="text-[#94a3b8] text-sm leading-relaxed mt-4">Precision custom label printing, die-cut stickers, and commercial adhesive solutions engineered for retail packaging, hardware, and creative brands.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://www.instagram.com/" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.pinterest.com/" class="social-circle"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Home</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Products</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Materials</a></li>
+                        <li><a href="pricing.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> pricing</a></li>
+                        <li><a href="guide.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> guide</a></li>
+                        <li><a href="contact.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Contact &amp; Quotes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Offerings -->
+                <div>
+                    <h4>Print Offerings</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Die-Cut Vinyl Stickers</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Roll Labels for Bottles &amp; Jars</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Industrial Barcode Labels</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Removable Wall Decals</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Holographic &amp; Metallic Foils</a></li>
+                    </ul>
+                </div>
+
+                <!-- Studio Visit -->
+                <div>
+                    <h4>Production Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">840 Printmakers Row, Suite 400, NY 10013</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="tel:+15552837465">+1 (555) 774-6832</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="mailto:quotes@printcraftstudio.com">quotes@printcraftstudio.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">Mon–Fri 8am–6pm · Bulk Dispatch Daily</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-[rgba(99,102,241,0.18)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#64748b]">&copy; 2026 <span class="text-[var(--accent-glow)] font-semibold">PrintCraft</span> Studio. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Terms</a>
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Privacy</a>
+                    <a href="guide.html" class="text-[#64748b] hover:text-[var(--accent-glow)]">Artwork Guidelines</a>
+                </div>
+            </div>
+
+            <div class="text-center pb-8">
+                <a href="#" class="inline-flex items-center gap-2 text-[#64748b] text-xs font-semibold uppercase tracking-widest hover:text-[var(--accent-glow)]">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileBtn) mobileBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = closeMenu;
+        if (drawerOverlay) drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // Theme Toggle (Obsidian Dark / Light)
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('printcraft-dark-theme');
+        const isLight = savedTheme === 'light';
+
+        function setTheme(light) {
+            if (light) {
+                document.body.classList.add('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('printcraft-dark-theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('printcraft-dark-theme', 'dark');
+            }
+        }
+        setTheme(isLight);
+
+        function toggleTheme() {
+            const currentlyLight = document.body.classList.contains('light-mode');
+            setTheme(!currentlyLight);
+        }
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // Direction Toggle (RTL / LTR)
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL';
+            }
+        }
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // Mobile Dropdown Accordion
+        const homeToggle = document.getElementById('mobile-home-toggle');
+        const homeItems = document.getElementById('mobile-home-items');
+        if (homeToggle && homeItems) {
+            homeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                homeItems.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

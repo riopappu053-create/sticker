@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact & Studio Inquiries · PrintCraft Custom Printing</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        mono: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Same Exact Font Style from Sweet Crumbs: Playfair Display + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 74px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #151d30;
+            --bg-inverted: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --accent-light: #1e1b4b;
+            --border-color: #1e293b;
+            --border-light: rgba(99, 102, 241, 0.25);
+            --nav-bg: rgba(11, 15, 25, 0.90);
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.14);
+            --shadow-color: rgba(99, 102, 241, 0.16);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-inverted: #0b0f19;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --nav-bg: rgba(248, 250, 252, 0.94);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --shadow-color: rgba(99, 102, 241, 0.1);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        /* ===== TYPOGRAPHY (MATCHING SWEET CRUMBS EXACTLY) ===== */
+        h1, h2, h3, .brand-logo, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        p {
+            line-height: 1.7;
+        }
+        .font-mono-spec {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== BRAND LOGO ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PILL NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 28px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 64px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-pill:hover {
+            color: var(--text-main);
+            background: var(--menu-hover-bg);
+        }
+
+        .nav-pill.active {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+
+        .dropdown-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-pill .nav-pill {
+            padding-right: 14px;
+        }
+        .dropdown-pill .nav-pill .fa-chevron-down {
+            font-size: 8px;
+            margin-left: 2px;
+            opacity: 0.6;
+            transition: transform 0.25s ease;
+        }
+        .dropdown-pill:hover .nav-pill .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown-pill-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 180px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 6px 4px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 100;
+        }
+        .dropdown-pill:hover .dropdown-pill-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-pill-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-pill-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-glow);
+            padding-left: 24px;
+        }
+        .dropdown-pill-item.active {
+            color: var(--accent-glow);
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .dropdown-pill-item:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 40px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-solid {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            border: none;
+        }
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(99, 102, 241, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== TOGGLES ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover {
+            color: var(--accent-glow);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== CONTACT FULL VIEWPORT HERO BANNER ===== */
+        .contact-hero-banner {
+            min-height: calc(100vh - 74px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 60px 24px;
+            background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.18) 0%, transparent 70%),
+                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12 !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.25) !important;
+            padding-top: 60px;
+            color: #f8fafc !important;
+        }
+        footer h4 {
+            color: #f8fafc !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        footer a, footer li, footer span:not(.brand-logo span) {
+            color: #94a3b8 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: var(--accent-glow) !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(99, 102, 241, 0.25) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #94a3b8 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: var(--gradient-accent) !important;
+            border-color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR                                                       -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+
+            <!-- Desktop Pill Navigation -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="nav-pills">
+                    <div class="dropdown-pill">
+                        <button class="nav-pill" id="home-pill-btn">
+                            Home <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-pill-menu">
+                            <a href="index.html" class="dropdown-pill-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-pill-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-pill">About</a>
+                    <a href="products.html" class="nav-pill">Products</a>
+                    <a href="materials.html" class="nav-pill">Materials</a>
+                    <a href="pricing.html" class="nav-pill">pricing</a>
+                    <a href="guide.html" class="nav-pill">guide</a>
+                    <a href="contact.html" class="nav-pill active">Contact</a>
+                </div>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-glow)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()">About</a>
+            <a href="products.html" class="mobile-link" onclick="closeMenu()">Products</a>
+            <a href="materials.html" class="mobile-link" onclick="closeMenu()">Materials</a>
+            <a href="pricing.html" class="mobile-link" onclick="closeMenu()">pricing</a>
+            <a href="guide.html" class="mobile-link" onclick="closeMenu()">guide</a>
+            <a href="contact.html" class="mobile-link active" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-user-plus mr-2"></i> Signup
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-file-invoice-dollar mr-2"></i> Request a Quote
+            </a>
+        </div>
+    </div>
+
+<!-- ============================================================ -->
+<!-- FULL VIEWPORT HERO BANNER (FIT 100VH)                        -->
+<!-- ============================================================ -->
+<header class="contact-hero-banner relative w-full flex items-center justify-center overflow-hidden px-5 sm:px-8">
+    
+    <!-- Sticker-Themed Hero Background Image Layer -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none">
+        <img 
+            src="img/pic3.webp" 
+            alt="Materials and Substrates Texture Background" 
+            class="w-full h-full object-cover object-center"
+        />
+         <!-- Contrast Overlay: Darkening + Vertical Fade -->
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[1px]"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/70"></div>
+        <div class="hero-bg-grid absolute inset-0 opacity-20"></div>
+    </div>
+
+    <!-- Centered Content Shell -->
+    <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center space-y-4 sm:space-y-5 lg:space-y-6 py-4">
+        
+        <!-- Eyebrow Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)]/85 border border-[var(--border-light)] text-[var(--accent-glow)] backdrop-blur-md shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+            <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Print Lab &amp; Custom Support</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-[var(--text-main)] font-display">
+            Let’s Print Something <br />
+            <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Extraordinary.</span>
+        </h1>
+
+        <!-- Subtitle Description -->
+        <p class="text-sm sm:text-base lg:text-lg text-[var(--text-muted)] max-w-xl font-normal leading-relaxed">
+            Have custom die-cut dimensions, special substrate requests, or high-volume wholesale requirements? Connect directly with our prepress technicians and print specialists.
+        </p>
+
+        <!-- CTA Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1 sm:pt-2">
+            <a href="#contact-form" class="btn btn-solid !py-3 !px-7 text-xs tracking-wider shadow-lg">
+                <span>Send Message</span>
+                <i class="fas fa-arrow-down text-[10px]"></i>
+            </a>
+            <a href="tel:+15552837465" class="btn btn-outline !py-3 !px-7 text-xs tracking-wider">
+                <i class="fas fa-phone text-[11px] text-[var(--accent-glow)]"></i>
+                <span>+1 (555) 774-6832</span>
+            </a>
+        </div>
+
+        <!-- Feature Tags -->
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 pt-4 sm:pt-5 text-[10px] sm:text-[11px] tracking-wider uppercase text-[var(--text-muted)] border-t border-[var(--border-light)] w-full max-w-lg">
+            <span class="flex items-center gap-1.5 sm:gap-2"><i class="fas fa-clock text-[var(--accent-glow)]"></i> Rapid 2-Hour Response</span>
+            <span class="flex items-center gap-1.5 sm:gap-2"><i class="fas fa-file-invoice text-[var(--accent-glow)]"></i> Same-Day Free Quotes</span>
+            <span class="flex items-center gap-1.5 sm:gap-2"><i class="fas fa-comments text-[var(--accent-glow)]"></i> Direct Prepress Support</span>
+        </div>
+        
+    </div>
+</header>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: INTERACTIVE MULTI-TRACK ESTIMATE & PROOF FORM     -->
+    <!-- ============================================================ -->
+    <section id="contact-form" class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--menu-hover-bg)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i class="fas fa-file-signature"></i> Direct Production Desk
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Request Custom Quote &amp; Digital Proof</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">Attach your vector cutline or supply your preliminary dimensions. Our technical prepress team will verify your artwork specs within two hours.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <div class="lg:col-span-8 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 sm:p-12 shadow-2xl">
+                    <form id="studio-contact-form" onsubmit="event.preventDefault(); handleFormSubmit();" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Your Name *</label>
+                                <input type="text" required placeholder="Alexander Vance" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Business Email *</label>
+                                <input type="email" required placeholder="alex@studiobrand.com" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Target Product</label>
+                                <select class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]">
+                                    <option>Die-Cut Vinyl Stickers</option>
+                                    <option>BOPP Bottle Roll Labels</option>
+                                    <option>Textured Estate Wine Stock</option>
+                                    <option>Prismatic Holographic Film</option>
+                                    <option>Custom Industrial Decals</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Estimated Quantity</label>
+                                <select class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]">
+                                    <option>Short Batch (100 - 250 pcs)</option>
+                                    <option>Retail Run (500 - 2,500 pcs)</option>
+                                    <option>Commercial Bulk (5,000 - 25,000)</option>
+                                    <option>Enterprise Contract (50,000+)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Surface Overlam</label>
+                                <select class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]">
+                                    <option>92° High-Gloss UV Shield</option>
+                                    <option>Velvet Soft-Touch Matte</option>
+                                    <option>Raised 3D Spot UV</option>
+                                    <option>Hot Stamped Metallic Foil</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Project Brief &amp; Dimensions</label>
+                            <textarea rows="4" placeholder="Detail your exact dimensions (W x H), packaging application surfaces, and mandatory turnarounds..." class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3.5 px-4 text-xs text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)] transition-colors"></textarea>
+                        </div>
+
+                        <!-- Dropzone File Simulation -->
+                        <div class="border-2 border-dashed border-[var(--border-light)] hover:border-[var(--accent-glow)] rounded-2xl p-6 text-center transition-colors cursor-pointer bg-[var(--bg-secondary)]" onclick="document.getElementById('artwork-file').click()">
+                            <input type="file" id="artwork-file" class="hidden" onchange="fileAttached(this)" />
+                            <i class="fas fa-cloud-arrow-up text-3xl text-[var(--accent-glow)] mb-3"></i>
+                            <div class="text-xs font-semibold text-[var(--text-main)]" id="file-drop-label">Attach Vector File or Raster Proof (.AI, .PDF, .EPS, .PSD)</div>
+                            <div class="text-[11px] text-[var(--text-dim)] mt-1">Up to 100MB per file · Prepress RIP audit included free</div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                            <span class="text-[11px] text-[var(--text-muted)] flex items-center gap-2"><i class="fas fa-lock text-[var(--accent-glow)]"></i> Strict Non-Disclosure Assured</span>
+                            <button type="submit" class="btn btn-solid !py-3.5 !px-10 text-xs tracking-wider w-full sm:w-auto">Submit For Free Proof</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col gap-6">
+                    <div class="p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-glow)] block mb-3">Studio Assurance</span>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mb-4">What Happens Next?</h3>
+                        <div class="space-y-4 text-xs text-[var(--text-muted)] leading-relaxed">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                                <p><strong class="text-[var(--text-main)]">Vector Health Audit:</strong> We verify DPI, bleed margins, and spot cut paths.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                                <p><strong class="text-[var(--text-main)]">PDF Soft Proofing:</strong> Digital proof is delivered to your inbox within 120 minutes.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                                <p><strong class="text-[var(--text-main)]">Press Calibration:</strong> Once signed off, files pass directly to our Swiss digital cutters.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-gradient-to-br from-indigo-950/40 to-slate-900 border border-[var(--border-light)]">
+                        <i class="fas fa-headset text-3xl text-[var(--accent-glow)] mb-4"></i>
+                        <h4 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Prefer Live Audio?</h4>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Discuss complex adhesives and multi-sku packaging runs directly with our print operators.</p>
+                        <a href="tel:+15552837465" class="btn btn-outline w-full !py-2.5 text-xs text-center"><i class="fas fa-phone mr-2"></i> +1 (555) 774-6832</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ============================================================ -->
+    <!-- SECTION 3: DIRECT SPECIALIST DIRECTORY                      -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Targeted Inquiries</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Specialized Department Contacts</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">Bypass central queues by connecting directly with department leads responsible for your requirements.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)] hover:border-[var(--accent-glow)] transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-[var(--accent-glow)] flex items-center justify-center text-base mb-4"><i class="fas fa-file-pdf"></i></div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Prepress &amp; Artwork</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Vector conversions, bleed problems, and spot white layers.</p>
+                    <a href="mailto:prepress@printcraftstudio.com" class="text-xs font-mono text-[var(--accent-glow)] hover:underline flex items-center gap-1.5"><i class="fas fa-envelope text-[10px]"></i> prepress@printcraftstudio.com</a>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)] hover:border-[var(--accent-glow)] transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-base mb-4"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Wholesale Accounts</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Volume contracts over 25,000 units and net terms.</p>
+                    <a href="mailto:enterprise@printcraftstudio.com" class="text-xs font-mono text-[var(--accent-glow)] hover:underline flex items-center gap-1.5"><i class="fas fa-envelope text-[10px]"></i> enterprise@printcraftstudio.com</a>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)] hover:border-[var(--accent-glow)] transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-base mb-4"><i class="fas fa-flask"></i></div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Substrate Testing Lab</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Chemical tolerances and specialty surface bonds.</p>
+                    <a href="mailto:materials@printcraftstudio.com" class="text-xs font-mono text-[var(--accent-glow)] hover:underline flex items-center gap-1.5"><i class="fas fa-envelope text-[10px]"></i> materials@printcraftstudio.com</a>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)] hover:border-[var(--accent-glow)] transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-base mb-4"><i class="fas fa-truck-fast"></i></div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Dispatch Logistics</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Tracking updates, pallet deliveries, and priority air.</p>
+                    <a href="mailto:shipping@printcraftstudio.com" class="text-xs font-mono text-[var(--accent-glow)] hover:underline flex items-center gap-1.5"><i class="fas fa-envelope text-[10px]"></i> shipping@printcraftstudio.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: INTERACTIVE STUDIO LOCATION & MAP                 -->
+    <!-- ============================================================ -->
+    <section class="w-full py-20 px-6 lg:px-12 bg-[var(--bg-color)] border-t border-[var(--border-light)] relative overflow-hidden">
+        <div class="max-w-[1440px] mx-auto">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--menu-hover-bg)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i class="fas fa-map-location-dot"></i> Studio Directions
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Find Our Production Lab</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">
+                    Visit our master workshop in Manhattan to review our physical archives, inspect press proofs, or consult with print engineers in person.
+                </p>
+            </div>
+
+            <!-- Map Wrapper Container -->
+            <div class="relative w-full rounded-3xl overflow-hidden border border-[var(--border-light)] shadow-2xl bg-[var(--bg-card)]">
+                
+                <!-- Google Maps Embed (Styled & Responsive) -->
+                <div class="w-full h-[420px] sm:h-[500px] relative">
+                    <iframe 
+                        title="PrintCraft Studio Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.238472535787!2d-74.0084323235338!3d40.71277527139366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a19859fbc49%3A0x6b8f36c53507c390!2sTribeca%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                        class="w-full h-full border-0 filter contrast-[1.08] saturate-[0.85] opacity-90"
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Floating Studio Info Card -->
+                <div class="relative lg:absolute bottom-6 left-6 right-6 lg:right-auto max-w-sm rounded-2xl bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-light)] p-6 shadow-2xl space-y-4 m-4 lg:m-0">
+                    <div>
+                        <span class="text-[10px] font-mono text-[var(--accent-glow)] uppercase tracking-wider block mb-1">Headquarters</span>
+                        <h4 class="text-base font-bold font-display text-[var(--text-main)]">Manhattan Print Lab &amp; Archive</h4>
+                        <p class="text-xs text-[var(--text-muted)] mt-1">840 Printmakers Row, Suite 400, New York, NY 10013</p>
+                    </div>
+
+                    <div class="space-y-1.5 text-xs text-[var(--text-dim)] border-t border-[var(--border-light)] pt-3 font-mono">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-door-open text-[var(--accent-glow)]"></i> Mon–Fri: 8:00 AM – 6:00 PM EST
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-square-parking text-[var(--accent-glow)]"></i> Commercial Freight &amp; Client Parking
+                        </div>
+                    </div>
+
+                    <div class="pt-1 flex gap-2">
+                        <a href="https://maps.google.com/?q=Tribeca,+New+York,+NY" target="_blank" rel="noopener noreferrer" class="btn btn-solid w-full !py-2.5 !text-[10px] tracking-wider">
+                            <i class="fas fa-diamond-turn-right text-[11px]"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: SERVICE LEVEL METRICS & RESPONSE GUARANTEES       -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-color)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Service Level Agreement</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)] mb-6">Committed Response Times</h2>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+                        We respect your production deadlines. Our commercial desks adhere to documented turnaround benchmarks so your production never stalls.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] text-xs text-[var(--text-muted)] flex items-center gap-3">
+                        <i class="fas fa-shield-halved text-2xl text-[var(--accent-glow)]"></i>
+                        <span>All inbound inquiries are tracked via real-time studio ticketing with dedicated engineering sign-offs.</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                        <span class="text-4xl font-bold font-mono text-[var(--accent-glow)] block mb-2">&lt; 120m</span>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mb-1">Digital PDF Proof Turnaround</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Upload print-ready vectors during studio hours to receive an imposition proof within two hours.</p>
+                    </div>
+
+                    <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                        <span class="text-4xl font-bold font-mono text-cyan-400 block mb-2">24h</span>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mb-1">Sample Kit Dispatch</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Material swatch requests leave our New York warehouse within one business day via tracked ground.</p>
+                    </div>
+
+                    <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                        <span class="text-4xl font-bold font-mono text-emerald-400 block mb-2">100%</span>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mb-1">Registration Guarantee</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Physical print misalignments exceeding 0.5mm are reprinted on priority lines at zero charge.</p>
+                    </div>
+
+                    <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                        <span class="text-4xl font-bold font-mono text-amber-400 block mb-2">48h</span>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mb-1">Standard Production Floor</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Short to mid-volume vinyl runs print, laminate, and die-cut within 48 hours of final proof sign-off.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: FREQUENTLY ASKED INQUIRY QUESTIONS (ACCORDION)   -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Quick Clarifications</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Inquiry &amp; Sampling FAQ</h2>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] mt-4">Common questions regarding swatch dispatches, file audits, and physical press visits.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-2 flex items-center gap-2">
+                        <i class="fas fa-circle-question text-[var(--accent-glow)] text-sm"></i> Are hardcopy physical press proofs available?
+                    </h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Yes. For high-volume packaging roll labels, we run a short 10-meter press proof on your exact selected substrate with finished laminations for a nominal setup credit refunded upon contract confirmation.</p>
+                </div>
+
+                <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-2 flex items-center gap-2">
+                        <i class="fas fa-circle-question text-[var(--accent-glow)] text-sm"></i> Can I arrange an in-person studio visit?
+                    </h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Brand owners and agency art directors are welcome to visit our Manhattan lab by appointment. Review our master archive of over 800 finished packaging labels and inspect color setups in person.</p>
+                </div>
+
+                <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-2 flex items-center gap-2">
+                        <i class="fas fa-circle-question text-[var(--accent-glow)] text-sm"></i> What file formats do you accept for quotes?
+                    </h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">We accept Adobe Illustrator (.AI), vector PDFs (.PDF), EPS, and high-resolution Photoshop files (.PSD). Rough PNG or JPEG sketches can also be evaluated for preliminary ballpark quotes.</p>
+                </div>
+
+                <div class="p-7 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-2 flex items-center gap-2">
+                        <i class="fas fa-circle-question text-[var(--accent-glow)] text-sm"></i> Do you ship internationally?
+                    </h3>
+                    <p class="text-xs text-[var(--text-muted)] leading-relaxed">Yes. We dispatch globally via DHL Express and FedEx International Priority with full customs clearance management. Regular shipments reach European, Australian, and Asian brands within 3–5 days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+<!-- SECTION 6: SAMPLE KIT DISPATCH BANNER (BOTTOM HERO CALL)     -->
+<!-- ============================================================ -->
+<section class="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--bg-color)] relative overflow-hidden">
+    <div class="max-w-[1400px] mx-auto rounded-3xl border border-[var(--border-light)] bg-gradient-to-br from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+        
+        <!-- Ambient Radial Glows -->
+        <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[var(--accent-glow)]/15 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[var(--accent-primary)]/10 blur-3xl"></div>
+
+        <!-- 12-Column Responsive Balanced Grid -->
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            <!-- Left Column: Copy & Actions (7 Cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 self-start rounded-full border border-[var(--border-light)] bg-[var(--accent-primary)]/10 px-3.5 py-1 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent-glow)]">
+                    <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+                    Tactile Verification
+                </div>
+
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--text-main)] font-display sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+                    Request a Physical Sample Swatchbook
+                </h2>
+
+                <p class="mt-4 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
+                    Feel our marine-grade vinyls, inspect spot gloss and matte finishes under natural light, and test adhesive strength on your own containers before committing to a full run.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3.5">
+                    <a href="#contact-form" class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[var(--accent-glow)] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--bg-color)] transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[var(--accent-glow)]/25 active:scale-[0.98]">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                        <span>Order Complete Sample Deck</span>
+                    </a>
+
+                    <a href="pricing.html" class="inline-flex items-center justify-center gap-2.5 rounded-xl border border-[var(--border-light)] bg-[var(--bg-card)]/60 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--text-main)] backdrop-blur-md transition-all duration-300 hover:border-[var(--accent-glow)] hover:bg-[var(--bg-card)] hover:text-[var(--accent-glow)] active:scale-[0.98]">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg>
+                        <span>View Tiered Pricing</span>
+                    </a>
+                </div>
+
+                <!-- Footer Assurances -->
+                <div class="mt-8 pt-6 border-t border-[var(--border-color)]/60 flex flex-wrap items-center gap-y-3 gap-x-6 text-[11px] font-mono uppercase tracking-wider text-[var(--text-dim)]">
+                    <span class="inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Same-Day Free Courier Dispatch
+                    </span>
+                    <span class="inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                        Includes 24 Substrate Swatches
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Column: Swatch Deck Inspection Matrix (5 Cols) -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
+                <!-- Swatch Metric 1 -->
+                <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-4 sm:p-5 backdrop-blur-md">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold font-display text-[var(--text-main)]">24 Stocks</div>
+                    <p class="text-xs text-[var(--text-muted)] mt-1">Full tactile spectrum from ultra-clear to textured kraft.</p>
+                </div>
+
+                <!-- Swatch Metric 2 -->
+                <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-4 sm:p-5 backdrop-blur-md">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold font-display text-[var(--text-main)]">UV Tested</div>
+                    <p class="text-xs text-[var(--text-muted)] mt-1">Direct sun, moisture &amp; refrigeration resistance proofs.</p>
+                </div>
+
+                <!-- Deck Details Banner (Full Width) -->
+                <div class="col-span-2 rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/50 p-4 sm:p-5 backdrop-blur-md flex items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs font-bold text-[var(--text-main)] tracking-wide">Standard Courier Packet</div>
+                        <div class="text-[11px] text-[var(--text-muted)] mt-0.5">Dispatched via priority air within 24 business hours</div>
+                    </div>
+                    <span class="shrink-0 rounded-lg bg-[var(--accent-glow)]/15 px-2.5 py-1 text-[11px] font-mono font-bold text-[var(--accent-glow)]">FREE</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Info -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #f8fafc !important;">
+                            <span>Print</span>Craft
+                        </div>
+                    </a>
+                    <p class="text-[#94a3b8] text-sm leading-relaxed mt-4">Precision custom label printing, die-cut stickers, and commercial adhesive solutions engineered for retail packaging, hardware, and creative brands.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://www.instagram.com/" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.pinterest.com/" class="social-circle"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Home</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Products</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Materials</a></li>
+                        <li><a href="pricing.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> pricing</a></li>
+                        <li><a href="guide.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> guide</a></li>
+                        <li><a href="contact.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Contact &amp; Quotes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Offerings -->
+                <div>
+                    <h4>Print Offerings</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Die-Cut Vinyl Stickers</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Roll Labels for Bottles &amp; Jars</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Industrial Barcode Labels</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Removable Wall Decals</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Holographic &amp; Metallic Foils</a></li>
+                    </ul>
+                </div>
+
+                <!-- Studio Visit -->
+                <div>
+                    <h4>Production Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">840 Printmakers Row, Suite 400, NY 10013</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="tel:+15552837465">+1 (555) 774-6832</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="mailto:quotes@printcraftstudio.com">quotes@printcraftstudio.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">Mon–Fri 8am–6pm · Bulk Dispatch Daily</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-[rgba(99,102,241,0.18)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#64748b]">&copy; 2026 <span class="text-[var(--accent-glow)] font-semibold">PrintCraft</span> Studio. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Terms</a>
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Privacy</a>
+                    <a href="guide.html" class="text-[#64748b] hover:text-[var(--accent-glow)]">Artwork Guidelines</a>
+                </div>
+            </div>
+
+            <div class="text-center pb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[#64748b] text-xs font-semibold uppercase tracking-widest hover:text-[var(--accent-glow)]">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileBtn) mobileBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = closeMenu;
+        if (drawerOverlay) drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // Theme Toggle (Obsidian Dark / Light)
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('printcraft-dark-theme');
+        const isLight = savedTheme === 'light';
+
+        function setTheme(light) {
+            if (light) {
+                document.body.classList.add('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('printcraft-dark-theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('printcraft-dark-theme', 'dark');
+            }
+        }
+        setTheme(isLight);
+
+        function toggleTheme() {
+            const currentlyLight = document.body.classList.contains('light-mode');
+            setTheme(!currentlyLight);
+        }
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // Direction Toggle (RTL / LTR)
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL';
+            }
+        }
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // Mobile Dropdown Accordion
+        const homeToggle = document.getElementById('mobile-home-toggle');
+        const homeItems = document.getElementById('mobile-home-items');
+        if (homeToggle && homeItems) {
+            homeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                homeItems.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

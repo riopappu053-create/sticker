@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="PrintCraft Studio - Sign in to access your print portal, orders, and saved cutline proofs." />
+    <title>PrintCraft · Studio Login</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== BASE RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(21, 29, 48, 0.85);
+            --bg-card-border: rgba(99, 102, 241, 0.22);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --border-light: rgba(99, 102, 241, 0.22);
+            --menu-hover-bg: rgba(99, 102, 241, 0.12);
+            --input-bg: rgba(15, 23, 42, 0.7);
+            --shadow-glow: rgba(99, 102, 241, 0.25);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.92);
+            --bg-card-border: rgba(99, 102, 241, 0.18);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --border-light: rgba(99, 102, 241, 0.16);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --input-bg: rgba(241, 245, 249, 0.9);
+            --shadow-glow: rgba(99, 102, 241, 0.12);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+
+        /* ===== BACKGROUND AMBIENT GRAPHICS ===== */
+        .ambient-mesh {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.4;
+            transition: all 0.5s ease;
+        }
+        .mesh-1 {
+            width: 500px;
+            height: 500px;
+            top: -10%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%);
+        }
+        .mesh-2 {
+            width: 550px;
+            height: 550px;
+            bottom: -15%;
+            left: -10%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+        }
+
+        /* Floating Sticker Badges */
+        .floating-stickers {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .sticker-badge {
+            position: absolute;
+            bottom: -120px;
+            padding: 8px 16px;
+            border-radius: 40px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.35;
+            animation: stickerFloat 18s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .sticker-badge i { color: var(--accent-glow); }
+        .sticker-badge:nth-child(1) { left: 8%; animation-duration: 22s; animation-delay: 0s; }
+        .sticker-badge:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: 4s; }
+        .sticker-badge:nth-child(3) { left: 60%; animation-duration: 25s; animation-delay: 2s; }
+        .sticker-badge:nth-child(4) { left: 82%; animation-duration: 20s; animation-delay: 6s; }
+
+        @keyframes stickerFloat {
+            0% { transform: translateY(0) rotate(-6deg); opacity: 0; }
+            15% { opacity: 0.5; }
+            85% { opacity: 0.5; }
+            100% { transform: translateY(-115vh) rotate(12deg); opacity: 0; }
+        }
+
+        /* ===== LOGIN CONTAINER & CARD ===== */
+        .login-wrap {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 460px;
+        }
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 28px;
+            padding: 2.5rem 2.25rem;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 45px var(--shadow-glow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        /* Brand Logo */
+        .brand-logo-area {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            margin-bottom: 1.25rem;
+        }
+        .brand-icon-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo-text span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Form Inputs */
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .input-box {
+            position: relative;
+            width: 100%;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .input-box input:focus {
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        }
+        .input-box .field-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+        .input-box input:focus ~ .field-icon {
+            color: var(--accent-glow);
+        }
+        .pass-toggle-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 4px;
+            font-size: 0.95rem;
+            transition: color 0.25s;
+        }
+        .pass-toggle-btn:hover {
+            color: var(--text-main);
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 13px 24px;
+            background: var(--gradient-accent);
+            color: #ffffff;
+            border: none;
+            border-radius: 40px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+        }
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        .btn-submit.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+        .btn-submit.loading .spinner { display: block; }
+        .btn-submit.loading .btn-content { display: none; }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Social OAuth Buttons */
+        .social-btn {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            background: var(--bg-secondary);
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+        .social-btn:hover {
+            background: var(--menu-hover-bg);
+            border-color: var(--accent-glow);
+            color: var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        /* Quick Floating Controls (Corner) */
+        .corner-controls {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 50;
+        }
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            border-radius: 40px;
+            padding: 7px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .rtl-btn:hover {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+
+        /* RTL Specifics */
+        [dir="rtl"] .input-box input {
+            padding: 12px 42px 12px 16px;
+        }
+        [dir="rtl"] .input-box .field-icon {
+            left: auto;
+            right: 15px;
+        }
+        [dir="rtl"] .pass-toggle-btn {
+            right: auto;
+            left: 14px;
+        }
+        [dir="rtl"] .corner-controls {
+            right: auto;
+            left: 24px;
+        }
+        [dir="rtl"] .btn-submit i {
+            transform: scaleX(-1);
+        }
+
+        /* Alert Banners */
+        .alert-box {
+            display: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            align-items: center;
+            gap: 8px;
+        }
+        .alert-box.show { display: flex; }
+        .alert-error {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #ef4444;
+        }
+        .alert-success {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #10b981;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 1.8rem 1.4rem;
+                border-radius: 20px;
+            }
+            .corner-controls {
+                top: 12px;
+                right: 14px;
+            }
+            [dir="rtl"] .corner-controls {
+                left: 14px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Gradient Blobs -->
+    <div class="ambient-mesh">
+        <div class="mesh-blob mesh-1"></div>
+        <div class="mesh-blob mesh-2"></div>
+    </div>
+
+    <!-- Floating Print Badges (Animation) -->
+    <div class="floating-stickers">
+        <div class="sticker-badge"><i class="fas fa-tag"></i> Die-Cut Vinyl</div>
+        <div class="sticker-badge"><i class="fas fa-bolt"></i> 48H Dispatch</div>
+        <div class="sticker-badge"><i class="fas fa-droplet"></i> Waterproof</div>
+        <div class="sticker-badge"><i class="fas fa-certificate"></i> PMS True-Match</div>
+    </div>
+
+    <!-- Quick Corner Utility (Dark/Light + RTL/LTR) -->
+    <div class="corner-controls">
+        <button id="themeToggle" class="theme-btn" title="Toggle Obsidian/Light Mode" aria-label="Toggle theme">
+            <i class="fas fa-sun" id="themeIcon"></i>
+        </button>
+        <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">LTR</button>
+    </div>
+
+    <!-- Login Container -->
+    <main class="login-wrap">
+        <div class="login-card">
+
+            <!-- Card Header -->
+            <div class="text-center mb-6">
+                <a href="index.html" class="brand-logo-area">
+                    <div class="brand-icon-wrapper">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="brand-logo-text font-display">
+                        <span>Print</span>Craft
+                    </div>
+                </a>
+                <h1 class="text-2xl sm:text-3xl font-bold text-[var(--text-main)] font-display">Client Portal</h1>
+                <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1.5 font-normal">
+                    Sign in to track orders, approve vector proofs &amp; configure re-runs.
+                </p>
+            </div>
+
+            <!-- Validation Feedback Alerts -->
+            <div id="alertError" class="alert-box alert-error">
+                <i class="fas fa-circle-exclamation shrink-0"></i>
+                <span id="errorMessage">Invalid email or password.</span>
+            </div>
+            <div id="alertSuccess" class="alert-box alert-success">
+                <i class="fas fa-circle-check shrink-0"></i>
+                <span id="successMessage">Authorized. Accessing your workspace...</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" autocomplete="off" novalidate>
+                
+                <!-- Email Field -->
+                <div class="mb-4 text-left rtl:text-right">
+                    <label for="email" class="form-label">Studio Email Address</label>
+                    <div class="input-box">
+                        <input type="email" id="email" placeholder="name@company.com" required autocomplete="email" inputmode="email">
+                        <i class="fas fa-envelope field-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3 text-left rtl:text-right">
+                    <label for="password" class="form-label">Account Password</label>
+                    <div class="input-box">
+                        <input type="password" id="password" placeholder="••••••••••••" required autocomplete="current-password">
+                        <i class="fas fa-lock field-icon"></i>
+                        <button type="button" class="pass-toggle-btn" id="togglePassword" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Options Row -->
+                <div class="flex items-center justify-between text-xs my-4">
+                    <label class="flex items-center gap-2 text-[var(--text-muted)] cursor-pointer select-none">
+                        <input type="checkbox" id="remember" checked class="accent-[#6366f1] w-3.5 h-3.5 rounded">
+                        <span>Remember studio ID</span>
+                    </label>
+                    <a href="contact.html" class="text-[var(--accent-glow)] font-semibold hover:underline">Forgot password?</a>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <div class="spinner"></div>
+                    <span class="btn-content inline-flex items-center gap-2">
+                        <span>Sign In to Studio</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </span>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center my-6 gap-3 text-xs text-[var(--text-dim)]">
+                <div class="flex-1 h-px bg-[var(--border-light)]"></div>
+                <span class="uppercase tracking-widest text-[10px] font-semibold">Or Instant Access</span>
+                <div class="flex-1 h-px bg-[var(--border-light)]"></div>
+            </div>
+
+            <!-- Social Providers -->
+            <div class="flex gap-3">
+                <button type="button" class="social-btn">
+                    <i class="fab fa-google text-[#ea4335]"></i>
+                    <span>Google</span>
+                </button>
+                <button type="button" class="social-btn">
+                    <i class="fab fa-apple text-base"></i>
+                    <span>Apple</span>
+                </button>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="mt-6 text-center text-xs text-[var(--text-muted)] pt-5 border-t border-[var(--border-light)]">
+                Don't have a print account? 
+                <a href="signup.html" class="text-[var(--accent-glow)] font-semibold hover:underline ml-1">Create Account</a>
+            </div>
+
+        </div>
+
+        <!-- Back to Store Link -->
+        <div class="text-center mt-5">
+            <a href="index.html" class="text-xs font-semibold uppercase tracking-widest text-[var(--text-dim)] hover:text-[var(--accent-glow)] transition-colors inline-flex items-center gap-2">
+                <i class="fas fa-arrow-left text-[10px] rtl:rotate-180"></i>
+                <span>Back to PrintCraft Home</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- ===== SCRIPT LOGIC ===== -->
+    <script>
+        (function() {
+            const html = document.documentElement;
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const rtlToggle = document.getElementById('rtlToggle');
+
+            const loginForm = document.getElementById('loginForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            const alertError = document.getElementById('alertError');
+            const alertSuccess = document.getElementById('alertSuccess');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // 1. Theme Storage & Synchronization
+            const savedTheme = localStorage.getItem('printcraft-dark-theme') || 'dark';
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('printcraft-dark-theme', 'light');
+                } else {
+                    body.classList.remove('light-mode');
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('printcraft-dark-theme', 'dark');
+                }
+            }
+            applyTheme(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const isLight = body.classList.contains('light-mode');
+                applyTheme(isLight ? 'dark' : 'light');
+            });
+
+            // 2. RTL / LTR Direction Support
+            const savedDir = localStorage.getItem('printcraft-dir') || 'ltr';
+            function applyDirection(dir) {
+                html.setAttribute('dir', dir);
+                rtlToggle.textContent = dir === 'rtl' ? 'RTL' : 'LTR';
+                localStorage.setItem('printcraft-dir', dir);
+            }
+            applyDirection(savedDir);
+
+            rtlToggle.addEventListener('click', () => {
+                const currentDir = html.getAttribute('dir') || 'ltr';
+                applyDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
+            });
+
+            // 3. Password Visibility Toggle
+            togglePassword.addEventListener('click', () => {
+                const isPass = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isPass ? 'text' : 'password');
+                eyeIcon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+            });
+
+            // 4. Alert Handlers
+            function showAlert(isError, msg) {
+                alertError.classList.remove('show');
+                alertSuccess.classList.remove('show');
+
+                if (isError) {
+                    errorMessage.textContent = msg;
+                    alertError.classList.add('show');
+                } else {
+                    successMessage.textContent = msg;
+                    alertSuccess.classList.add('show');
+                }
+            }
+
+            // 5. Form Submission Simulation
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alertError.classList.remove('show');
+                alertSuccess.classList.remove('show');
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                if (!email || !password) {
+                    showAlert(true, 'Please fill in both email and password.');
+                    return;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    showAlert(true, 'Please provide a valid company email.');
+                    return;
+                }
+                if (password.length < 6) {
+                    showAlert(true, 'Password must be at least 6 characters.');
+                    return;
+                }
+
+                // Show spinner
+                submitBtn.classList.add('loading');
+
+                setTimeout(() => {
+                    // Demo Credentials Check
+                    const validUser = 'admin@printcraft.com';
+                    const validPass = 'printcraft123';
+
+                    if (email === validUser && password === validPass) {
+                        showAlert(false, 'Login successful! Redirecting to studio...');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1200);
+                    } else {
+                        showAlert(true, 'Invalid credentials. Hint: admin@printcraft.com / printcraft123');
+                        submitBtn.classList.remove('loading');
+                    }
+                }, 1000);
+            });
+
+            // Console Hint for quick testing
+            console.log('🏷️ PrintCraft Demo Credentials:');
+            console.log('Email: admin@printcraft.com');
+            console.log('Password: printcraft123');
+        })();
+    </script>
+</body>
+</html>

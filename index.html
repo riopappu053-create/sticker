@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintCraft · Sticker & Custom Label Printing Shop</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        mono: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Same Exact Font Style from Sweet Crumbs: Playfair Display + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 74px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #151d30;
+            --bg-inverted: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --accent-light: #1e1b4b;
+            --border-color: #1e293b;
+            --border-light: rgba(99, 102, 241, 0.25);
+            --nav-bg: rgba(11, 15, 25, 0.90);
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.14);
+            --shadow-color: rgba(99, 102, 241, 0.16);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-inverted: #0b0f19;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --nav-bg: rgba(248, 250, 252, 0.94);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --shadow-color: rgba(99, 102, 241, 0.1);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        /* ===== TYPOGRAPHY (MATCHING SWEET CRUMBS EXACTLY) ===== */
+        h1, h2, h3, .brand-logo, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        p {
+            line-height: 1.7;
+        }
+        .font-mono-spec {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== BRAND LOGO ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PILL NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 28px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 64px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-pill:hover {
+            color: var(--text-main);
+            background: var(--menu-hover-bg);
+        }
+
+        .nav-pill.active {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+
+        .dropdown-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-pill .nav-pill {
+            padding-right: 14px;
+        }
+        .dropdown-pill .nav-pill .fa-chevron-down {
+            font-size: 8px;
+            margin-left: 2px;
+            opacity: 0.6;
+            transition: transform 0.25s ease;
+        }
+        .dropdown-pill:hover .nav-pill .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown-pill-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 180px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 6px 4px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 100;
+        }
+        .dropdown-pill:hover .dropdown-pill-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-pill-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-pill-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-glow);
+            padding-left: 24px;
+        }
+        .dropdown-pill-item.active {
+            color: var(--accent-glow);
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .dropdown-pill-item:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 40px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-solid {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            border: none;
+        }
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(99, 102, 241, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== TOGGLES ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* ===== HERO SPLIT ===== */
+        .hero-split {
+            min-height: calc(100vh - 74px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 50px 0;
+            background: radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.16) 0%, transparent 55%),
+                        radial-gradient(circle at 10% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 45%);
+        }
+        .hero-img-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.65);
+            border: 1px solid var(--border-light);
+        }
+        .floating-glass-badge {
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 14px 20px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+        }
+        body.light-mode .floating-glass-badge {
+            background: rgba(255, 255, 255, 0.90);
+        }
+        [dir="rtl"] .floating-glass-badge {
+            left: auto;
+            right: -15px;
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover {
+            color: var(--accent-glow);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12 !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.25) !important;
+            padding-top: 60px;
+            color: #f8fafc !important;
+        }
+        footer h4 {
+            color: #f8fafc !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        footer a, footer li, footer span:not(.brand-logo span) {
+            color: #94a3b8 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: var(--accent-glow) !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(99, 102, 241, 0.25) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #94a3b8 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: var(--gradient-accent) !important;
+            border-color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR                                                       -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+
+            <!-- Desktop Pill Navigation -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="nav-pills">
+                    <div class="dropdown-pill">
+                        <button class="nav-pill active" id="home-pill-btn">
+                            Home <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-pill-menu">
+                            <a href="index.html" class="dropdown-pill-item active">Home 1</a>
+                            <a href="home-2.html" class="dropdown-pill-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-pill">About</a>
+                    <a href="products.html" class="nav-pill">Products</a>
+                    <a href="materials.html" class="nav-pill">Materials</a>
+                    <a href="pricing.html" class="nav-pill">pricing</a>
+                    <a href="guide.html" class="nav-pill">guide</a>
+                    <a href="contact.html" class="nav-pill">Contact</a>
+                </div>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-glow)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()">About</a>
+            <a href="products.html" class="mobile-link" onclick="closeMenu()">Products</a>
+            <a href="materials.html" class="mobile-link" onclick="closeMenu()">Materials</a>
+            <a href="pricing.html" class="mobile-link" onclick="closeMenu()">pricing</a>
+            <a href="guide.html" class="mobile-link" onclick="closeMenu()">guide</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-user-plus mr-2"></i> Signup
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-file-invoice-dollar mr-2"></i> Request a Quote
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2-COLUMN SPLIT HERO SECTION                                  -->
+    <!-- ============================================================ -->
+    <section id="home" class="hero-split w-full">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
+                
+                <!-- Left Column -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left rtl:text-right space-y-6 sm:space-y-7">
+                    
+                    <!-- Eyebrow Tag -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)]">
+                        <span class="w-2 h-2 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+                        <span class="text-[11px] font-semibold tracking-widest uppercase">Precision Custom Print Lab</span>
+                    </div>
+
+                    <!-- Main Headline (Identical font-display & scale as Sweet Crumbs) -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] text-[var(--text-main)] font-display">
+                        High-grade stickers, <br />
+                        sculpted for brand’s <br />
+                        <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">golden moments.</span>
+                    </h1>
+
+                    <!-- Supporting Description -->
+                    <p class="text-base sm:text-lg text-[var(--text-muted)] max-w-xl font-normal leading-relaxed">
+                        Where precision digital die-cutting meets commercial packaging. We manufacture durable roll labels, barcode adhesives, and waterproof architectural vinyl on certified substrates.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
+                        <a href="products.html" class="btn btn-solid !py-3.5 !px-8 text-xs tracking-wider shadow-lg">
+                            <span>Explore Products</span>
+                            <i class="fas fa-arrow-right text-[10px] rtl:rotate-180"></i>
+                        </a>
+                        <a href="contact.html" class="btn btn-outline !py-3.5 !px-8 text-xs tracking-wider">
+                            <i class="fas fa-file-invoice text-[11px] text-[var(--accent-glow)]"></i>
+                            <span>Instant Quote</span>
+                        </a>
+                    </div>
+
+                    <!-- Micro Metrics / Proof (Identical sizing & font as Sweet Crumbs) -->
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 pt-6 border-t border-[var(--border-light)] w-full max-w-lg">
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-[var(--text-main)] font-display">1200 DPI</div>
+                            <div class="text-[11px] uppercase tracking-wider text-[var(--text-muted)] mt-0.5">Ultra HD Print</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-[var(--text-main)] font-display">100%</div>
+                            <div class="text-[11px] uppercase tracking-wider text-[var(--text-muted)] mt-0.5">Weatherproof</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-[var(--text-main)] font-display">48-Hr</div>
+                            <div class="text-[11px] uppercase tracking-wider text-[var(--text-muted)] mt-0.5">Turnaround</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="lg:col-span-5 relative mt-4 lg:mt-0">
+                    
+                    <!-- Ambient Glow -->
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-cyan-500/20 rounded-[36px] filter blur-2xl -z-10 opacity-70"></div>
+
+                    <!-- Showcase Card -->
+                    <div class="hero-img-card group">
+                        <img 
+                            src="img/st2.webp" 
+                            alt="Custom Die-Cut Stickers and Matte Product Labels Collection" 
+                            class="w-full h-[400px] sm:h-[500px] lg:h-[520px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-color)]/60 via-transparent to-transparent"></div>
+                    </div>
+
+                    <!-- Floating Glass Accolade Badge -->
+                    <div class="floating-glass-badge hidden sm:flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] flex items-center justify-center shrink-0">
+                            <i class="fas fa-award text-[var(--accent-glow)] text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-[var(--text-main)] tracking-wide">UV &amp; Scratch Resistant</div>
+                            <div class="text-[10px] text-[var(--text-muted)] mt-0.5">Commercial Vinyl Spec</div>
+                        </div>
+                    </div>
+
+                    <!-- Top Accent Pill -->
+                    <div class="absolute -top-4 -right-4 bg-[var(--bg-card)] border border-[var(--border-light)] px-4 py-2 rounded-full shadow-md hidden sm:flex items-center gap-2">
+                        <i class="fas fa-sparkles text-[var(--accent-glow)] text-xs"></i>
+                        <span class="text-[10px] font-semibold tracking-wider text-[var(--text-main)] uppercase">Free Digital Proofs</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+<!-- 1. PRODUCT CATEGORIES & DIE-CUT GALLERY                      -->
+<!-- ============================================================ -->
+<section id="products-showcase" class="relative border-t border-[var(--border-light)] bg-[var(--bg-secondary)] py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mb-12 flex flex-col gap-4 sm:mb-16 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--border-light)] bg-[var(--bg-card)] px-3.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--accent-glow)]">
+          <svg class="h-3 w-3 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Bespoke Substrates</span>
+        </div>
+        <h2 class="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl lg:text-5xl font-display">
+          Engineered Adhesive Formats
+        </h2>
+      </div>
+      <p class="max-w-md text-sm text-[var(--text-muted)] sm:text-base">
+        Precision-milled contour cutting meets archival pigments for premium cosmetic, packaging, and technical labeling.
+      </p>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Card 1: Die-Cut Vinyl Singles -->
+      <a href="#die-cut-vinyl" class="group flex flex-col justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--accent-glow)] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-glow)]">
+        <div>
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] transition-transform duration-300 group-hover:scale-110">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l4 7H8l4-7zm-7 9h6v6H5v-6zm10 0a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"/>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-bold text-[var(--text-main)]">Die-Cut Vinyl Singles</h3>
+          <p class="text-xs leading-relaxed text-[var(--text-muted)]">
+            Exact contour kiss-cuts through thick 6 mil vinyl with silicone peel tabs for rapid unbacking.
+          </p>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-6 text-xs font-semibold text-[var(--accent-glow)]">
+          <span>From $0.18 / unit</span>
+          <svg class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.293 6.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L16.586 13H4a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Card 2: Automated Roll Labels -->
+      <a href="#roll-labels" class="group flex flex-col justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--accent-glow)] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-glow)]">
+        <div>
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] transition-transform duration-300 group-hover:scale-110">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 3H7a4 4 0 00-4 4v10a4 4 0 004 4h12a2 2 0 002-2V5a2 2 0 00-2-2zM7 5h12v12H7a2 2 0 01-2-2V7a2 2 0 012-2z"/>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-bold text-[var(--text-main)]">Automated Roll Labels</h3>
+          <p class="text-xs leading-relaxed text-[var(--text-muted)]">
+            High-speed applicator machine compatible rolls with #3 core winding for bottles, cans, and jars.
+          </p>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-6 text-xs font-semibold text-[var(--accent-glow)]">
+          <span>From 250 to 50k+</span>
+          <svg class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.293 6.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L16.586 13H4a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Card 3: Holographic Prisms -->
+      <a href="#holographic-prisms" class="group flex flex-col justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--accent-glow)] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-glow)]">
+        <div>
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] transition-transform duration-300 group-hover:scale-110">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l2.4 5.6L20 10l-5.6 2.4L12 18l-2.4-5.6L4 10l5.6-2.4L12 2zm7 13l1.2 2.8L23 19l-2.8 1.2L19 23l-1.2-2.8L15 19l2.8-1.2L19 15z"/>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-bold text-[var(--text-main)]">Holographic Prisms</h3>
+          <p class="text-xs leading-relaxed text-[var(--text-muted)]">
+            Diffraction grating substrate reflecting vivid rainbow spectra under varying ambient lighting.
+          </p>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-6 text-xs font-semibold text-[var(--accent-glow)]">
+          <span>Micro-embossed 70µ</span>
+          <svg class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.293 6.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L16.586 13H4a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Card 4: Industrial Spec Sheets -->
+      <a href="#industrial-spec" class="group flex flex-col justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--accent-glow)] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-glow)]">
+        <div>
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] transition-transform duration-300 group-hover:scale-110">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 4h2v16H2V4zm4 0h1v16H6V4zm3 0h2v16H9V4zm4 0h1v16h-1V4zm3 0h2v16h-2V4zm4 0h2v16h-2V4z"/>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-bold text-[var(--text-main)]">Industrial Spec Sheets</h3>
+          <p class="text-xs leading-relaxed text-[var(--text-muted)]">
+            Cryogenic and thermal-resistant polyester face stocks for serials, QR barcodes, and asset tags.
+          </p>
+        </div>
+        <div class="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-6 text-xs font-semibold text-[var(--accent-glow)]">
+          <span>UL 969 Certified</span>
+          <svg class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.293 6.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L16.586 13H4a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+   <!-- ============================================================ -->
+<!-- 2. MATERIALS & FINISH COMPARISON MATRIX (LINES: ~75)         -->
+<!-- ============================================================ -->
+<section id="finishes" class="py-24 relative overflow-hidden">
+    <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                <i class="fas fa-atom text-[9px]"></i> Material Science
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">Protective Coatings &amp; Textures</h2>
+            <p class="text-sm sm:text-base text-[var(--text-muted)] mt-3">Select the tactile response and chemical resistance required for your product's operational environment.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- MATTE CARD -->
+            <div class="relative bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 hover:border-[var(--accent-primary)] transition-colors group">
+                <div class="h-44 rounded-2xl bg-slate-900 mb-8 border border-[var(--border-color)] overflow-hidden relative">
+                    <img 
+                        src="img/st1.webp" 
+                        alt="Matte Soft-Touch Packaging" 
+                        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20"></div>
+                    <span class="absolute bottom-3 left-4 text-xs font-display font-bold text-white/70 tracking-widest uppercase">MATTE</span>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-2xl font-bold font-display text-[var(--text-main)]">Soft-Touch Velvet</h3>
+                    <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-[var(--menu-hover-bg)] text-[var(--accent-glow)]">Glare-Free</span>
+                </div>
+                <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Non-reflective satin sheen engineered with a micron-silica coating. Ideal for candle jars, specialty wine, and luxury retail packaging.</p>
+                <ul class="space-y-2.5 text-xs text-[var(--text-dim)] border-t border-[var(--border-color)] pt-6">
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> Zero fingerprint smudging</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> Scuff-resistant tactile barrier</li>
+                </ul>
+            </div>
+
+            <!-- GLOSS CARD (FLAGSHIP) -->
+            <div class="relative bg-[var(--bg-card)] border-2 border-[var(--accent-primary)] rounded-3xl p-8 shadow-2xl shadow-indigo-500/10 group">
+                <div class="absolute -top-3.5 right-8 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
+                    Flagship Spec
+                </div>
+                <div class="h-44 rounded-2xl bg-slate-900 mb-8 border border-[var(--border-light)] overflow-hidden relative">
+                    <img 
+                        src="img/st3.webp" 
+                        alt="Ultra High-Gloss Packaging Finish" 
+                        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20"></div>
+                    <div class="absolute -inset-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-45 group-hover:translate-x-full transition-transform duration-1000"></div>
+                    <span class="absolute bottom-3 left-4 text-xs font-display font-bold text-cyan-300 tracking-widest uppercase">GLOSS</span>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-2xl font-bold font-display text-[var(--text-main)]">Ultra High-Gloss</h3>
+                    <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-[var(--menu-hover-bg)] text-[var(--accent-glow)]">Optic Depth</span>
+                </div>
+                <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">High optical clarity UV polymer lacquer delivering maximum color saturation and liquid glass reflectiveness across vibrant gradients.</p>
+                <ul class="space-y-2.5 text-xs text-[var(--text-dim)] border-t border-[var(--border-color)] pt-6">
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> 100% Waterproof submerged rating</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> UV light stabilization index: 5 Yrs</li>
+                </ul>
+            </div>
+
+            <!-- METALLIC CARD -->
+            <div class="relative bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 hover:border-[var(--accent-primary)] transition-colors group">
+                <div class="h-44 rounded-2xl bg-slate-900 mb-8 border border-[var(--border-color)] overflow-hidden relative">
+                    <img 
+                        src="img/st4.webp" 
+                        alt="Metallic Hot-Stamp Gold Foil Packaging" 
+                        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20"></div>
+                    <span class="absolute bottom-3 left-4 text-xs font-display font-bold text-amber-300 tracking-widest uppercase">METALLIC</span>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-2xl font-bold font-display text-[var(--text-main)]">Hot-Stamp Gold Foil</h3>
+                    <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-[var(--menu-hover-bg)] text-[var(--accent-glow)]">Artisan</span>
+                </div>
+                <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Micro-embossed thermal brass die stamping with genuine metallic leafing in bright gold, satin rose, and raw brushed aluminum.</p>
+                <ul class="space-y-2.5 text-xs text-[var(--text-dim)] border-t border-[var(--border-color)] pt-6">
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> Tactile relief depth of 0.25mm</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)] text-[10px]"></i> Premium unboxing visual impact</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- ============================================================ -->
+    <!-- 3. PRODUCTION WORKFLOW & LAB METRICS (LINES: ~75)            -->
+    <!-- ============================================================ -->
+    <section id="workflow" class="py-24 border-y border-[var(--border-light)] bg-[var(--bg-secondary)]/30 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase">
+                        <i class="fas fa-microchip text-[9px]"></i> Calibrated Pipeline
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display leading-tight">From Vector File to Precision Batch</h2>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Our automated RIP processing and automated laser die plotters yield sub-millimeter registration accuracy on every run without expensive tooling dies.</p>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                            <span class="w-8 h-8 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center font-bold text-xs shrink-0">01</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-[var(--text-main)]">Vector Bleed Analysis</h4>
+                                <p class="text-xs text-[var(--text-dim)] mt-0.5">Automated cutline generation with zero color shift rasterization.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)]">
+                            <span class="w-8 h-8 rounded-lg bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center font-bold text-xs shrink-0">02</span>
+                            <div>
+                                <h4 class="text-sm font-bold text-[var(--text-main)]">8-Channel Pigment Laydown</h4>
+                                <p class="text-xs text-[var(--text-dim)] mt-0.5">CMYK plus dual light-black and opaque titanium white underbases.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-6">
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                        <div class="text-3xl sm:text-4xl font-display font-bold text-[var(--accent-glow)]">±0.02 mm</div>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mt-2">Laser Cut Tolerance</h4>
+                        <p class="text-xs text-[var(--text-dim)] mt-1">Optical eye sensors continuously track registration pins dynamically.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                        <div class="text-3xl sm:text-4xl font-display font-bold text-indigo-400">98.4%</div>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mt-2">Pantone Matching</h4>
+                        <p class="text-xs text-[var(--text-dim)] mt-1">Spectrophotometer calibrated profiles for brand compliance.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                        <div class="text-3xl sm:text-4xl font-display font-bold text-cyan-400">1440 DPI</div>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mt-2">Micro-Droplet Density</h4>
+                        <p class="text-xs text-[var(--text-dim)] mt-1">Variable 3.5 picoliter droplet heads prevent banding in gradients.</p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                        <div class="text-3xl sm:text-4xl font-display font-bold text-emerald-400">Zero</div>
+                        <h4 class="text-sm font-bold text-[var(--text-main)] mt-2">Tooling Die Setup Fees</h4>
+                        <p class="text-xs text-[var(--text-dim)] mt-1">Digital knife and galvanometer heads eliminate setup surcharges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. TIERED WHOLESALE & BULK PRICING (LINES: ~75)              -->
+    <!-- ============================================================ -->
+    <section id="pricing" class="py-24 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <i class="fas fa-tag text-[9px]"></i> Transparent Rates
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">Commercial Tier Volume</h2>
+                </div>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md">Immediate scale discounts calculated on substrate volume with standard overnight proof turnaround included.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-[var(--text-dim)]">Boutique Trial</span>
+                        <h3 class="text-2xl font-bold font-display text-[var(--text-main)] mt-1 mb-4">Sample Batch</h3>
+                        <div class="text-4xl font-display font-bold text-[var(--text-main)] mb-6">$49 <span class="text-xs font-sans text-[var(--text-muted)] font-normal">/ flat 50 units</span></div>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Up to 3.5" x 3.5" custom contour</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Choice of Matte or Gloss laminate</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Digital PDF master proof in 4 hours</li>
+                        </ul>
+                    </div>
+                    <a href="pricing.html" class="btn btn-outline w-full !py-3 text-center">Select Sampler</a>
+                </div>
+                <div class="bg-[var(--bg-card)] border-2 border-[var(--accent-primary)] rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/10">
+                    
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-[var(--accent-glow)]">Production Run</span>
+                        <h3 class="text-2xl font-bold font-display text-[var(--text-main)] mt-1 mb-4">Standard Retail</h3>
+                        <div class="text-4xl font-display font-bold text-[var(--text-main)] mb-6">$189 <span class="text-xs font-sans text-[var(--text-muted)] font-normal">/ 500 units</span></div>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Waterproof architectural vinyl</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Machine-slit backing slit line</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Split across 2 distinct artworks</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Priority 48-Hour production queue</li>
+                        </ul>
+                    </div>
+                    <a href="pricing.html" class="btn btn-solid w-full !py-3 text-center">Deploy Batch</a>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-[var(--text-dim)]">Enterprise Co-Packing</span>
+                        <h3 class="text-2xl font-bold font-display text-[var(--text-main)] mt-1 mb-4">Roll Industrial</h3>
+                        <div class="text-4xl font-display font-bold text-[var(--text-main)] mb-6">$640 <span class="text-xs font-sans text-[var(--text-muted)] font-normal">/ 5,000 units</span></div>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-8">
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Continuous automated roll format</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> BOPP grease and chemical repellent</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Custom core sizing (1" or 3" diameter)</li>
+                            <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-glow)]"></i> Dedicated pre-press print engineer</li>
+                        </ul>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline w-full !py-3 text-center">Consult Engineer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. CLIENT REVIEWS & BRAND TESTIMONIALS (LINES: ~75)          -->
+    <!-- ============================================================ -->
+    <section id="testimonials" class="py-24 border-t border-[var(--border-light)] bg-[var(--bg-secondary)]/40 relative">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <i class="fas fa-star text-[9px]"></i> Proof of Quality
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-main)] font-display">Endorsed by Makers &amp; Brands</h2>
+                </div>
+                <div class="flex items-center gap-2 text-amber-400 text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-xs font-semibold text-[var(--text-main)] ml-2">4.98 / 5.0 (2,400+ Orders)</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-[var(--accent-glow)] text-xs mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-[var(--text-muted)] italic leading-relaxed mb-6">"The opacity of their white ink underbase on black acrylic bottles is flawless. None of our microbrewery labels lift even after hours in melting ice buckets."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-[var(--border-color)]">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-bold text-xs">EL</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-[var(--text-main)]">Ethan Vance</h4>
+                            <p class="text-[11px] text-[var(--text-dim)]">Founding Brewer, NorthFork Ales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-[var(--accent-glow)] text-xs mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-[var(--text-muted)] italic leading-relaxed mb-6">"Their digital die precision saved our cosmetic relaunch. The soft-touch matte finish feels like fine suede, matching our $80 serum retail positioning perfectly."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-[var(--border-color)]">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs">MS</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-[var(--text-main)]">Mira Sorvino-Klein</h4>
+                            <p class="text-[11px] text-[var(--text-dim)]">Creative Director, AURA Botanics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-[var(--accent-glow)] text-xs mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-[var(--text-muted)] italic leading-relaxed mb-6">"Turnaround speed is second to none. We had 10,000 holographic security stickers in hand 48 hours after proof sign-off in Brooklyn. Truly our go-to print lab."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-[var(--border-color)]">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold text-xs">DL</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-[var(--text-main)]">David Lin</h4>
+                            <p class="text-[11px] text-[var(--text-dim)]">Head of Hardware, Kinetix Audio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. HIGH-CONVERSION SAMPLE KIT CTA (LINES: ~75)               -->
+    <!-- ============================================================ -->
+    <section id="sample-kit" class="py-24 relative overflow-hidden">
+        <div class="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+            <div class="bg-gradient-to-r from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[var(--gradient-accent)] opacity-10 blur-3xl rounded-full pointer-events-none"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--menu-hover-bg)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold tracking-widest uppercase">
+                            <i class="fas fa-box-open"></i> Zero Commitment Trial
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[var(--text-main)] leading-tight">
+                            Experience the Substrates in Person with Our <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Curated Swatch Kit.</span>
+                        </h2>
+                        <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-2xl leading-relaxed">
+                            Order our comprehensive master material pack containing 24 live samples including holographic vinyl, soft-touch matte, clear BOPP, and foil stamps with a refundable $10 shipping voucher.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end justify-center gap-4">
+                        <a href="contact.html" class="btn btn-solid !py-4 !px-8 text-xs tracking-wider shadow-lg w-full text-center">
+                            <span>Claim Swatch Kit</span>
+                            <i class="fas fa-paper-plane text-[10px] rtl:rotate-180"></i>
+                        </a>
+                        <a href="guide.html" class="btn btn-outline !py-4 !px-8 text-xs tracking-wider w-full text-center">
+                            <i class="fas fa-book-open text-[11px] text-[var(--accent-glow)]"></i>
+                            <span>View Spec Sheet</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Info -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #f8fafc !important;">
+                            <span>Print</span>Craft
+                        </div>
+                    </a>
+                    <p class="text-[#94a3b8] text-sm leading-relaxed mt-4">Precision custom label printing, die-cut stickers, and commercial adhesive solutions engineered for retail packaging, hardware, and creative brands.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://www.instagram.com/" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.pinterest.com/" class="social-circle"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Home</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Products</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Materials</a></li>
+                        <li><a href="pricing.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> pricing</a></li>
+                        <li><a href="guide.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> guide</a></li>
+                        <li><a href="contact.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Contact &amp; Quotes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Offerings -->
+                <div>
+                    <h4>Print Offerings</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Die-Cut Vinyl Stickers</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Roll Labels for Bottles &amp; Jars</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Industrial Barcode Labels</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Removable Wall Decals</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Holographic &amp; Metallic Foils</a></li>
+                    </ul>
+                </div>
+
+                <!-- Studio Visit -->
+                <div>
+                    <h4>Production Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">840 Printmakers Row, Suite 400, NY 10013</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="tel:+15552837465">+1 (555) 774-6832</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="mailto:quotes@printcraftstudio.com">quotes@printcraftstudio.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">Mon–Fri 8am–6pm · Bulk Dispatch Daily</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-[rgba(99,102,241,0.18)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#64748b]">&copy; 2026 <span class="text-[var(--accent-glow)] font-semibold">PrintCraft</span> Studio. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Terms</a>
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Privacy</a>
+                    <a href="guide.html" class="text-[#64748b] hover:text-[var(--accent-glow)]">Artwork Guidelines</a>
+                </div>
+            </div>
+
+            <div class="text-center pb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[#64748b] text-xs font-semibold uppercase tracking-widest hover:text-[var(--accent-glow)]">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileBtn) mobileBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = closeMenu;
+        if (drawerOverlay) drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // Theme Toggle (Obsidian Dark / Light)
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('printcraft-dark-theme');
+        const isLight = savedTheme === 'light';
+
+        function setTheme(light) {
+            if (light) {
+                document.body.classList.add('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('printcraft-dark-theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('printcraft-dark-theme', 'dark');
+            }
+        }
+        setTheme(isLight);
+
+        function toggleTheme() {
+            const currentlyLight = document.body.classList.contains('light-mode');
+            setTheme(!currentlyLight);
+        }
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // Direction Toggle (RTL / LTR)
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL';
+            }
+        }
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // Mobile Dropdown Accordion
+        const homeToggle = document.getElementById('mobile-home-toggle');
+        const homeItems = document.getElementById('mobile-home-items');
+        if (homeToggle && homeItems) {
+            homeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                homeItems.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

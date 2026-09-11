@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artwork & File Prep Guide · PrintCraft Custom Printing</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial'%3E🏷️%3C/text%3E%3C/svg%3E" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        mono: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Same Exact Font Style from Sweet Crumbs: Playfair Display + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 74px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #151d30;
+            --bg-inverted: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #6366f1;
+            --accent-glow: #06b6d4;
+            --accent-light: #1e1b4b;
+            --border-color: #1e293b;
+            --border-light: rgba(99, 102, 241, 0.25);
+            --nav-bg: rgba(11, 15, 25, 0.90);
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.14);
+            --shadow-color: rgba(99, 102, 241, 0.16);
+            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        }
+
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-inverted: #0b0f19;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent-primary: #4f46e5;
+            --accent-glow: #0891b2;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --nav-bg: rgba(248, 250, 252, 0.94);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(99, 102, 241, 0.08);
+            --shadow-color: rgba(99, 102, 241, 0.1);
+            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+        }
+
+        /* ===== TYPOGRAPHY (MATCHING SWEET CRUMBS EXACTLY) ===== */
+        h1, h2, h3, .brand-logo, .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        p {
+            line-height: 1.7;
+        }
+        .font-mono-spec {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== BRAND LOGO ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            background: rgba(99, 102, 241, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-glow);
+            font-size: 1.15rem;
+        }
+        .brand-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .brand-logo span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== PILL NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 28px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 64px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-pill:hover {
+            color: var(--text-main);
+            background: var(--menu-hover-bg);
+        }
+
+        .nav-pill.active {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+
+        .dropdown-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-pill .nav-pill {
+            padding-right: 14px;
+        }
+        .dropdown-pill .nav-pill .fa-chevron-down {
+            font-size: 8px;
+            margin-left: 2px;
+            opacity: 0.6;
+            transition: transform 0.25s ease;
+        }
+        .dropdown-pill:hover .nav-pill .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown-pill-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 180px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 6px 4px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 100;
+        }
+        .dropdown-pill:hover .dropdown-pill-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-pill-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-pill-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-glow);
+            padding-left: 24px;
+        }
+        .dropdown-pill-item.active {
+            color: var(--accent-glow);
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .dropdown-pill-item:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 40px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-solid {
+            background: var(--gradient-accent);
+            color: #ffffff !important;
+            border: none;
+        }
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(99, 102, 241, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== TOGGLES ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover {
+            color: var(--accent-glow);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            color: var(--text-muted) !important;
+        }
+
+        /* ===== GUIDE FULL VIEWPORT HERO BANNER ===== */
+        .guide-hero-banner {
+            min-height: calc(100vh - 74px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 60px 24px;
+            background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.18) 0%, transparent 100%),
+                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12 !important;
+            border-top: 1px solid rgba(99, 102, 241, 0.25) !important;
+            padding-top: 60px;
+            color: #f8fafc !important;
+        }
+        footer h4 {
+            color: #f8fafc !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        footer a, footer li, footer span:not(.brand-logo span) {
+            color: #94a3b8 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: var(--accent-glow) !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(99, 102, 241, 0.25) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #94a3b8 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: var(--gradient-accent) !important;
+            border-color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR                                                       -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+
+            <!-- Desktop Pill Navigation -->
+            <div class="hidden xl:flex items-center justify-center flex-1 px-4">
+                <div class="nav-pills">
+                    <div class="dropdown-pill">
+                        <button class="nav-pill" id="home-pill-btn">
+                            Home <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-pill-menu">
+                            <a href="index.html" class="dropdown-pill-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-pill-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-pill">About</a>
+                    <a href="products.html" class="nav-pill">Products</a>
+                    <a href="materials.html" class="nav-pill">Materials</a>
+                    <a href="pricing.html" class="nav-pill">pricing</a>
+                    <a href="guide.html" class="nav-pill active">guide</a>
+                    <a href="contact.html" class="nav-pill">Contact</a>
+                </div>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="brand-logo">
+                    <span>Print</span>Craft
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-glow)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()">About</a>
+            <a href="products.html" class="mobile-link" onclick="closeMenu()">Products</a>
+            <a href="materials.html" class="mobile-link" onclick="closeMenu()">Materials</a>
+            <a href="pricing.html" class="mobile-link" onclick="closeMenu()">pricing</a>
+            <a href="guide.html" class="mobile-link active" onclick="closeMenu()">guide</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()">
+                    <i class="fas fa-user-plus mr-2"></i> Signup
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-file-invoice-dollar mr-2"></i> Request a Quote
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+<!-- FULL VIEWPORT HERO BANNER WITH BACKGROUND IMAGE              -->
+<!-- ============================================================ -->
+<header class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-4">
+
+    <!-- 1. Background Image Layer -->
+    <div class="absolute inset-0 -z-20">
+       <img 
+    src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=2000&q=80" 
+    alt="Vibrant custom vinyl stickers and decal artwork" 
+    class="w-full h-full object-cover object-center"
+    loading="eager"
+/>
+    </div>
+
+    <!-- Contrast Overlay: Darkening + Vertical Fade -->
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[1px]"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/70"></div>
+        <div class="hero-bg-grid absolute inset-0 opacity-20"></div>
+    </div>
+
+    <!-- Centered Content Shell -->
+    <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center space-y-4 sm:space-y-5 lg:space-y-6 py-4">
+        
+        <!-- Eyebrow Pill -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[var(--bg-secondary)]/80 backdrop-blur-md border border-[var(--border-light)] text-[var(--accent-glow)] shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase">Print-Ready Preparation Standards</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] text-[var(--text-main,#ffffff)] font-display">
+            Artwork Guidelines, <br />
+            <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">calibrated for perfection.</span>
+        </h1>
+
+        <!-- Subtitle Description -->
+        <p class="text-base sm:text-lg lg:text-xl text-[var(--text-muted,#cbd5e1)] max-w-2xl font-normal leading-relaxed">
+            Ensure flawless sticker cuts and vibrant label colors. Learn our vector cut-line setup, CMYK color conversions, bleed margins, and minimum line weight requirements before upload.
+        </p>
+
+        <!-- CTA Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a href="#prep-steps" class="btn btn-solid !py-3.5 !px-8 text-xs tracking-wider shadow-lg backdrop-blur-sm">
+                <span>Read Step-by-Step Guide</span>
+                <i class="fas fa-arrow-down text-[10px]"></i>
+            </a>
+            <a href="#templates" class="btn btn-outline !py-3.5 !px-8 text-xs tracking-wider backdrop-blur-sm">
+                <i class="fas fa-download text-[11px] text-[var(--accent-glow)]"></i>
+                <span>Download Cut Templates</span>
+            </a>
+        </div>
+
+        <!-- Feature Tags -->
+        <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 pt-8 text-[11px] tracking-wider uppercase text-[var(--text-muted,#cbd5e1)] border-t border-[var(--border-light)] w-full max-w-xl">
+            <span class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)]"></i> 300+ DPI Native Resolution</span>
+            <span class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)]"></i> CMYK Fogra39 Profile</span>
+            <span class="flex items-center gap-2"><i class="fas fa-check text-[var(--accent-glow)]"></i> 2mm Full Bleed Edge</span>
+        </div>
+        
+    </div>
+</header>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: PRE-FLIGHT MASTER CHECKLIST (INTERACTIVE SUITE)   -->
+    <!-- ============================================================ -->
+    <section id="prep-steps" class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--menu-hover-bg)] border border-[var(--border-light)] text-[var(--accent-glow)] text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <i class="fas fa-list-check"></i> Standard Verification
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Pre-Flight Artwork Checklist</h2>
+                </div>
+                <div class="flex items-center gap-4 bg-[var(--bg-card)] px-5 py-3 rounded-2xl border border-[var(--border-light)]">
+                    <span class="text-xs text-[var(--text-muted)]">Verified Checklist:</span>
+                    <span id="checklist-counter" class="text-xs font-mono font-bold text-[var(--accent-glow)]">0 / 6 Passed</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-palette"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">CMYK Fogra39 Profile</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Save native vectors and raster assets under CMYK. Avoid RGB screen modes to eliminate color gamut clipping and unexpected shifts in tone.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: Color Profile</div>
+                </div>
+
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-expand"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">2.0mm Peripheral Bleed</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Extend all edge backgrounds 2mm (0.08 in) beyond the designated trim border to prevent hairline white margins during die shifts.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: Cut Safety</div>
+                </div>
+
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-font"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Convert Text to Outlines</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Convert typography to native vector bezier paths (`Ctrl/Cmd + Shift + O`) to prevent rasterization or missing font substitutions.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: Vector Assets</div>
+                </div>
+
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-image"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Native 300+ DPI Target</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Raster elements like product photography must maintain at least 300 effective DPI at 100% scale to avoid soft edges and pixelation.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: Image Fidelity</div>
+                </div>
+
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-bezier-curve"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Spot Magenta Cut Paths</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Place die cutlines on a dedicated layer titled `CutContour`, formatted as a 100% Spot Magenta hairline stroke set to Overprint.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: CNC Die Calibration</div>
+                </div>
+
+                <div class="chk-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-7 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer" onclick="toggleCheckItem(this)">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-10 h-10 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-lg"><i class="fas fa-ruler-combined"></i></span>
+                            <span class="chk-box w-6 h-6 rounded-lg border border-[var(--border-light)] flex items-center justify-center text-[var(--accent-glow)]"><i class="fas fa-check opacity-0 transition-opacity text-xs"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">0.5pt Minimum Line Stroke</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Hairlines thinner than 0.5pt (0.175mm) or reversed light text under 6pt can choke during ink transfer and flood out on print.</p>
+                    </div>
+                    <div class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider pt-4 border-t border-[var(--border-light)] mt-4">Required: Stroke Weight</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: VECTOR CUTLINE & BLEED ANATOMY (DIAGRAMMATIC)     -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-color)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Mechanical Boundaries</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Anatomy of a Print-Ready Die-Cut</h2>
+                <p class="text-sm sm:text-base text-[var(--text-muted)] mt-4">Every label contains three strict zones. Calibrate artwork dimensions to preserve vector fidelity through rotary cutting.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Visual Schematic Card -->
+                <div class="lg:col-span-6 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-h-[380px]">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl border-2 border-dashed border-rose-500/60 flex items-center justify-center relative bg-gradient-to-br from-indigo-950/30 to-cyan-950/20">
+                        <span class="absolute -top-3 left-4 text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-rose-500 text-white font-bold tracking-wider">Bleed Edge (+2mm)</span>
+                        <div class="w-52 h-52 sm:w-64 sm:h-64 rounded-2xl border-2 border-fuchsia-500 flex items-center justify-center relative shadow-[0_0_20px_rgba(217,70,239,0.2)]">
+                            <span class="absolute -top-3 left-4 text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-fuchsia-600 text-white font-bold tracking-wider">Cut Contour (Trim Line)</span>
+                            <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-xl border border-emerald-400/80 border-dashed flex flex-col items-center justify-center p-3 text-center bg-[var(--bg-secondary)]">
+                                <span class="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold tracking-wider mb-2">Safe Zone (-2mm)</span>
+                                <i class="fas fa-shield-cat text-2xl text-[var(--accent-glow)] mb-1"></i>
+                                <span class="text-[10px] text-[var(--text-muted)]">Keep All Crucial Graphics &amp; Copy Inside Here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Descriptive Breakdown -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] border-l-4 border-l-rose-500">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base font-bold text-[var(--text-main)]">1. Outer Bleed Boundary</h3>
+                            <span class="text-[10px] font-mono text-rose-400 font-bold px-2 py-0.5 rounded bg-rose-500/10">+2.0 mm Beyond Trim</span>
+                        </div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Background graphics, gradients, and full solid washes must extend to this outer edge. As high-speed cutters flex mechanically, bleed guards prevent raw substrate showing at margins.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] border-l-4 border-l-fuchsia-500">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base font-bold text-[var(--text-main)]">2. The CutContour Vector Line</h3>
+                            <span class="text-[10px] font-mono text-fuchsia-400 font-bold px-2 py-0.5 rounded bg-fuchsia-500/10">0.25 pt Spot Color Stroke</span>
+                        </div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">The true edge of your final physical sticker. Our Swiss CNC knives trace this exact bezier path. Ensure paths are closed geometry with no overlapping duplicate anchor nodes.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] border-l-4 border-l-emerald-400">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base font-bold text-[var(--text-main)]">3. Internal Safe Boundary</h3>
+                            <span class="text-[10px] font-mono text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10">-2.0 mm Inside Trim</span>
+                        </div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Keep barcodes, logos, warning icons, and fine legal copy inside this safe area. Any element positioned outside risks clipping during high-speed production stripping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: CMYK VS RGB CHROMATIC CALIBRATION                -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Color Gamut Calibration</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">CMYK &amp; Spot Inks Management</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">Computer screens emit light via RGB, whereas physical inkjet and offset heads combine cyan, magenta, yellow, and black pigment to absorb light.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Rich Black Formula -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-[var(--accent-glow)] flex items-center justify-center text-xl mb-6"><i class="fas fa-circle-half-stroke"></i></div>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mb-2">Rich Black vs 100K</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Standard black (K: 100%) can look washed out or gray across larger background fills. Use our custom deep black mix for bold, solid finishes.</p>
+                        <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] font-mono text-xs space-y-1">
+                            <div class="text-[var(--accent-glow)] font-bold mb-2">PrintCraft Rich Black Mix:</div>
+                            <div class="flex justify-between text-[var(--text-muted)]"><span>Cyan (C):</span><span class="text-[var(--text-main)]">60%</span></div>
+                            <div class="flex justify-between text-[var(--text-muted)]"><span>Magenta (M):</span><span class="text-[var(--text-main)]">40%</span></div>
+                            <div class="flex justify-between text-[var(--text-muted)]"><span>Yellow (Y):</span><span class="text-[var(--text-main)]">40%</span></div>
+                            <div class="flex justify-between text-[var(--text-muted)]"><span>Black (K):</span><span class="text-[var(--text-main)]">100%</span></div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider block mt-6">Use 100K only for body copy</span>
+                </div>
+
+                <!-- Card 2: White Underbase Layer -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-6"><i class="fas fa-layer-group"></i></div>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mb-2">Spot White Underbase</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Standard process inks are naturally transparent. When printing on clear BOPP, kraft paper, or holographic stock, an opaque white ink mask keeps colors vivid.</p>
+                        <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] text-xs space-y-2 text-[var(--text-muted)]">
+                            <div class="font-bold text-[var(--text-main)]">Layer Setup Instruction:</div>
+                            <p>Name layer: <span class="font-mono text-[var(--accent-glow)]">Spot_White</span></p>
+                            <p>Apply 100% spot tone set to <span class="font-mono text-emerald-400">Overprint Fill</span> to prevent underlying graphics from being masked out.</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider block mt-6">Crucial for Holographic and Clear substrates</span>
+                </div>
+
+                <!-- Card 3: Pantone Matching (PMS) -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 hover:border-[var(--accent-glow)] transition-all duration-300 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-6"><i class="fas fa-swatchbook"></i></div>
+                        <h3 class="text-xl font-bold font-display text-[var(--text-main)] mb-2">Pantone Solid Coated (PMS)</h3>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-6">Need exact brand color matching across multiple print runs? Tag swatches using the official Pantone Matching System Solid Coated library.</p>
+                        <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] text-xs space-y-2 text-[var(--text-muted)]">
+                            <div class="font-bold text-[var(--text-main)]">Color Tolerance Target:</div>
+                            <p>Our calibrated spectrophotometers run within a tight <span class="font-mono text-amber-400 font-bold">Delta-E &lt; 1.5</span> variance relative to official physical Pantone master targets.</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-wider block mt-6">Available on Flexo &amp; Indigo Digital Runs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: INTERACTIVE PPI & RESOLUTION CALIBRATOR          -->
+    <!-- ============================================================ -->
+    <section class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-color)]">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Raster Mechanics</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)] mb-6">Interactive DPI &amp; Scale Calibrator</h2>
+                <p class="text-sm text-[var(--text-muted)] leading-relaxed mb-6">
+                    A file that looks crisp on a mobile phone can turn blurry or pixelated when enlarged for print. Run your target pixel dimensions below to verify print-ready resolution at scale.
+                </p>
+                <div class="p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] text-xs text-[var(--text-muted)] space-y-3">
+                    <div class="flex items-center gap-2 text-[var(--text-main)] font-semibold">
+                        <i class="fas fa-info-circle text-[var(--accent-glow)]"></i> Native Scaling Rule
+                    </div>
+                    <p>Web graphics are built at 72 DPI. Print reproduction requires at least 300 DPI to render smooth gradients and crisp line work without visible artifacting.</p>
+                </div>
+            </div>
+
+            <!-- Calibrator Interface Component -->
+            <div class="lg:col-span-7 bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-8 sm:p-10 shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Image Width (Pixels)</label>
+                        <input type="number" id="calc-px-w" value="1200" oninput="calculatePrintDPI()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3 px-4 text-xs font-mono text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Image Height (Pixels)</label>
+                        <input type="number" id="calc-px-h" value="1200" oninput="calculatePrintDPI()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3 px-4 text-xs font-mono text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Target Print Width (Inches)</label>
+                        <input type="number" id="calc-target-w" value="3" step="0.5" oninput="calculatePrintDPI()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3 px-4 text-xs font-mono text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-primary)]" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-[var(--text-dim)] mb-2">Effective DPI Output</label>
+                        <div id="calc-dpi-display" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl py-3 px-4 text-xs font-mono font-bold text-emerald-400">400 DPI (Excellent)</div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-[10px] font-mono tracking-widest text-[var(--accent-glow)] uppercase block mb-1">Pre-Flight Assessment</span>
+                        <p id="calc-dpi-status" class="text-xs text-[var(--text-muted)]">Your pixel count supports clean, professional printing up to <span class="text-[var(--text-main)] font-semibold">4.0 × 4.0 inches</span> at 300 DPI.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-solid !py-2.5 !px-6 text-[11px] shrink-0">Upload File</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: MASTER TEMPLATE DOWNLOADS & FILE SPECS            -->
+    <!-- ============================================================ -->
+    <section id="templates" class="w-full py-24 px-6 lg:px-12 bg-[var(--bg-secondary)] border-y border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-[0.25em] text-[var(--accent-glow)] block mb-3">Pre-Configured Canvases</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-display text-[var(--text-main)]">Starter Die-Cut Templates</h2>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-[var(--text-muted)]">
+                    <span class="flex items-center gap-1.5"><i class="fas fa-file-pdf text-rose-400"></i> PDF</span>
+                    <span class="flex items-center gap-1.5"><i class="fas fa-file-pen text-amber-400"></i> AI</span>
+                    <span class="flex items-center gap-1.5"><i class="fas fa-file-image text-cyan-400"></i> PSD</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Template 1 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-6 hover:border-[var(--accent-glow)] transition-all group shadow-xl">
+                    <div class="w-full h-32 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] mb-5 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 rounded-full border-2 border-dashed border-indigo-400 flex items-center justify-center text-[var(--accent-glow)] text-xs font-mono font-bold">Circle</div>
+                    </div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Circle Stickers</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Standard circular trim, including safety safe zone margins and full 2mm bleed.</p>
+                    <div class="flex items-center gap-2 pt-4 border-t border-[var(--border-light)]">
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .AI</a>
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .PDF</a>
+                    </div>
+                </div>
+
+                <!-- Template 2 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-6 hover:border-[var(--accent-glow)] transition-all group shadow-xl">
+                    <div class="w-full h-32 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] mb-5 flex flex-col items-center justify-center">
+                        <div class="w-20 h-14 rounded-xl border-2 border-dashed border-cyan-400 flex items-center justify-center text-cyan-400 text-xs font-mono font-bold">Square</div>
+                    </div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Rounded Square</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Quarter-inch corner radius die cutline with preset bleed bounding boxes.</p>
+                    <div class="flex items-center gap-2 pt-4 border-t border-[var(--border-light)]">
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .AI</a>
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .PDF</a>
+                    </div>
+                </div>
+
+                <!-- Template 3 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-6 hover:border-[var(--accent-glow)] transition-all group shadow-xl">
+                    <div class="w-full h-32 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] mb-5 flex flex-col items-center justify-center">
+                        <div class="w-24 h-14 rounded-lg border-2 border-dashed border-amber-400 flex items-center justify-center text-amber-400 text-xs font-mono font-bold">Roll Label</div>
+                    </div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Bottle Roll Label</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Calculated circumferences for standard 8oz, 12oz, and 16oz jars and bottles.</p>
+                    <div class="flex items-center gap-2 pt-4 border-t border-[var(--border-light)]">
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .AI</a>
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .PDF</a>
+                    </div>
+                </div>
+
+                <!-- Template 4 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-6 hover:border-[var(--accent-glow)] transition-all group shadow-xl">
+                    <div class="w-full h-32 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-light)] mb-5 flex flex-col items-center justify-center">
+                        <div class="w-20 h-16 rounded-2xl border-2 border-dashed border-rose-400 flex items-center justify-center text-rose-400 text-xs font-mono font-bold">Custom</div>
+                    </div>
+                    <h3 class="text-base font-bold font-display text-[var(--text-main)] mb-1">Custom Die-Cut</h3>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">Sample multi-layer vector canvas containing dedicated CutContour and WhiteInk layers.</p>
+                    <div class="flex items-center gap-2 pt-4 border-t border-[var(--border-light)]">
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .AI</a>
+                        <a href="#" class="btn btn-outline !py-1.5 !px-3 !text-[10px] w-full">Download .PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: FREE PRE-FLIGHT FILE AUDIT CALL TO ACTION         -->
+<!-- ============================================================ -->
+<section class="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--bg-color)] relative overflow-hidden">
+    <div class="max-w-[1400px] mx-auto rounded-3xl border border-[var(--border-light)] bg-gradient-to-br from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+        
+        <!-- Ambient Radial Glows -->
+        <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[var(--accent-glow)]/15 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[var(--accent-primary)]/10 blur-3xl"></div>
+
+        <!-- 12-Column Responsive Layout -->
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            <!-- Left Column: Copy & Actions (7 Cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 self-start rounded-full border border-[var(--border-light)] bg-[var(--accent-primary)]/10 px-3.5 py-1 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent-glow)]">
+                    <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent-glow)] animate-pulse"></span>
+                    Complimentary Technical Service
+                </div>
+
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--text-main)] font-display sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+                    Let Our Production Technicians Proof Your Files
+                </h2>
+
+                <p class="mt-4 text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
+                    Unsure if your cut paths are set up cleanly or if your embedded rasters will print sharply? Send us your source files. Our studio will run a comprehensive RIP pre-flight check and send you a digital proof within two business hours—free of charge.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3.5">
+                    <a href="contact.html" class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[var(--accent-glow)] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--bg-color)] transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[var(--accent-glow)]/25 active:scale-[0.98]">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <span>Upload File for Free Proof</span>
+                    </a>
+
+                    <a href="materials.html" class="inline-flex items-center justify-center gap-2.5 rounded-xl border border-[var(--border-light)] bg-[var(--bg-card)]/60 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[var(--text-main)] backdrop-blur-md transition-all duration-300 hover:border-[var(--accent-glow)] hover:bg-[var(--bg-card)] hover:text-[var(--accent-glow)] active:scale-[0.98]">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                        <span>Explore Substrate Specs</span>
+                    </a>
+                </div>
+
+                <!-- Footer Assurances -->
+                <div class="mt-8 pt-6 border-t border-[var(--border-color)]/60 flex flex-wrap items-center gap-y-3 gap-x-6 text-[11px] font-mono uppercase tracking-wider text-[var(--text-dim)]">
+                    <span class="inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        2-Hour Proof Delivery
+                    </span>
+                    <span class="inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[var(--accent-glow)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Guaranteed Zero Print Defects
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Column: Pre-Flight Audit Showcase (5 Cols) -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
+                <!-- Inspection Metric 1 -->
+                <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-4 sm:p-5 backdrop-blur-md">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold font-display text-[var(--text-main)]">32-Point</div>
+                    <p class="text-xs text-[var(--text-muted)] mt-1">Automated RIP &amp; vector raster validation check.</p>
+                </div>
+
+                <!-- Inspection Metric 2 -->
+                <div class="rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/80 p-4 sm:p-5 backdrop-blur-md">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-glow)] mb-3">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                    </div>
+                    <div class="text-xl sm:text-2xl font-bold font-display text-[var(--text-main)]">Vector True</div>
+                    <p class="text-xs text-[var(--text-muted)] mt-1">Auto-alignment of kiss &amp; die bleed cutlines.</p>
+                </div>
+
+                <!-- Live Audit Status Banner (Full Width) -->
+                <div class="col-span-2 rounded-2xl border border-[var(--border-light)] bg-[var(--bg-card)]/50 p-4 sm:p-5 backdrop-blur-md flex items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs font-bold text-[var(--text-main)] tracking-wide">Supported File Formats</div>
+                        <div class="text-[11px] text-[var(--text-muted)] mt-0.5">AI, EPS, PDF, PSD, SVG &amp; TIFF (300+ DPI)</div>
+                    </div>
+                    <span class="shrink-0 rounded-lg bg-[var(--accent-glow)]/15 px-2.5 py-1 text-[11px] font-mono font-bold text-[var(--accent-glow)]">$0 COST</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Info -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #f8fafc !important;">
+                            <span>Print</span>Craft
+                        </div>
+                    </a>
+                    <p class="text-[#94a3b8] text-sm leading-relaxed mt-4">Precision custom label printing, die-cut stickers, and commercial adhesive solutions engineered for retail packaging, hardware, and creative brands.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="https://www.instagram.com/" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.pinterest.com/" class="social-circle"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Home</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Products</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Materials</a></li>
+                        <li><a href="pricing.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> pricing</a></li>
+                        <li><a href="guide.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> guide</a></li>
+                        <li><a href="contact.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Contact &amp; Quotes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Offerings -->
+                <div>
+                    <h4>Print Offerings</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Die-Cut Vinyl Stickers</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Roll Labels for Bottles &amp; Jars</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Industrial Barcode Labels</a></li>
+                        <li><a href="products.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Removable Wall Decals</a></li>
+                        <li><a href="materials.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[var(--accent-glow)]"></i> Holographic &amp; Metallic Foils</a></li>
+                    </ul>
+                </div>
+
+                <!-- Studio Visit -->
+                <div>
+                    <h4>Production Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">840 Printmakers Row, Suite 400, NY 10013</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="tel:+15552837465">+1 (555) 774-6832</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]"><a href="mailto:quotes@printcraftstudio.com">quotes@printcraftstudio.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[var(--accent-glow)] mt-0.5"></i>
+                            <span class="text-[#94a3b8]">Mon–Fri 8am–6pm · Bulk Dispatch Daily</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-[rgba(99,102,241,0.18)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#64748b]">&copy; 2026 <span class="text-[var(--accent-glow)] font-semibold">PrintCraft</span> Studio. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Terms</a>
+                    <a href="#" class="text-[#64748b] hover:text-[var(--accent-glow)]">Privacy</a>
+                    <a href="guide.html" class="text-[#64748b] hover:text-[var(--accent-glow)]">Artwork Guidelines</a>
+                </div>
+            </div>
+
+            <div class="text-center pb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[#64748b] text-xs font-semibold uppercase tracking-widest hover:text-[var(--accent-glow)]">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileBtn) mobileBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = closeMenu;
+        if (drawerOverlay) drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // Theme Toggle (Obsidian Dark / Light)
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('printcraft-dark-theme');
+        const isLight = savedTheme === 'light';
+
+        function setTheme(light) {
+            if (light) {
+                document.body.classList.add('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('printcraft-dark-theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('printcraft-dark-theme', 'dark');
+            }
+        }
+        setTheme(isLight);
+
+        function toggleTheme() {
+            const currentlyLight = document.body.classList.contains('light-mode');
+            setTheme(!currentlyLight);
+        }
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // Direction Toggle (RTL / LTR)
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL';
+            }
+        }
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // Mobile Dropdown Accordion
+        const homeToggle = document.getElementById('mobile-home-toggle');
+        const homeItems = document.getElementById('mobile-home-items');
+        if (homeToggle && homeItems) {
+            homeToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                homeItems.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>
