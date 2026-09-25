@@ -581,13 +581,13 @@
 
             <!-- Desktop Actions -->
             <div class="hidden xl:flex items-center gap-3">
-                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
-                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">Signup</a>
+                <a href="login.html" class="btn btn-outline !px-5 !text-[10px] h-[38px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !px-5 !text-[10px] h-[38px]">Signup</a>
                 <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
                 <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
                     <i class="fas fa-sun" id="theme-icon-desktop"></i>
                 </button>
-                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+                <button id="rtl-btn" class="rtl-toggle h-[38px]" title="Toggle LTR/RTL">LTR</button>
             </div>
 
             <!-- Mobile Trigger -->
@@ -696,7 +696,7 @@
         <!-- Main Heading -->
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-white font-display">
             Engineered Labels &amp; <br />
-            <span class="italic font-normal bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Bespoke Stickers.</span>
+            <span class="italic font-normal bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-glow)] bg-clip-text text-transparent">Bespoke Stickers.</span>
         </h1>
 
         <!-- Subtitle Description -->
@@ -741,9 +741,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-primary)] transition-all flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-fingerprint"></i>
-                        </div>
+                        <img src="img/st1.webp" alt="Tamper-Evident Void" class="w-full h-40 object-cover rounded-xl mb-5">
                         <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Tamper-Evident Void</h3>
                         <p class="text-xs text-[var(--text-muted)] leading-relaxed">Reveals an irreversible patterned VOID message upon peeling to safeguard warranty seals and tamper verification.</p>
                     </div>
@@ -751,9 +749,7 @@
                 </div>
                 <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-primary)] transition-all flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-temperature-arrow-down"></i>
-                        </div>
+                        <img src="img/st2.webp" alt="Cryogenic Polypropylene" class="w-full h-40 object-cover rounded-xl mb-5">
                         <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Cryogenic Polypropylene</h3>
                         <p class="text-xs text-[var(--text-muted)] leading-relaxed">Sustains deep-freeze storage down to -80°C and autoclave sterilization cycles without border lift or adhesive bleed.</p>
                     </div>
@@ -761,9 +757,7 @@
                 </div>
                 <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-primary)] transition-all flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-barcode"></i>
-                        </div>
+                        <img src="img/st3.webp" alt="Matte White Polyester" class="w-full h-40 object-cover rounded-xl mb-5">
                         <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Matte White Polyester</h3>
                         <p class="text-xs text-[var(--text-muted)] leading-relaxed">Top-coated for high-contrast thermal transfer barcode scanning, serial plates, and permanent hardware identification.</p>
                     </div>
@@ -771,9 +765,7 @@
                 </div>
                 <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl p-7 hover:border-[var(--accent-primary)] transition-all flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-[var(--menu-hover-bg)] text-[var(--accent-glow)] flex items-center justify-center text-xl mb-5">
-                            <i class="fas fa-water"></i>
-                        </div>
+                        <img src="img/st4.webp" alt="Ultra-Clear Removable" class="w-full h-40 object-cover rounded-xl mb-5">
                         <h3 class="text-lg font-bold font-display text-[var(--text-main)] mb-2">Ultra-Clear Removable</h3>
                         <p class="text-xs text-[var(--text-muted)] leading-relaxed">Optically transparent vinyl leaving 0% adhesive residue on glassware, glazed ceramics, and smooth acrylic surfaces.</p>
                     </div>
@@ -960,7 +952,7 @@
                             <i class="fas fa-file-invoice"></i> Custom Production Runs
                         </div>
                         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[var(--text-main)] leading-tight">
-                            Need a Tailored Die-Cut or <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Complex Material Spec?</span>
+                            Need a Tailored Die-Cut or <span class="bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-glow)] bg-clip-text text-transparent">Complex Material Spec?</span>
                         </h2>
                         <p class="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] max-w-2xl leading-relaxed">
                             Submit your vector blueprints or transparent artwork files. Our pre-press engineering department generates a free digital PDF proof and substrate recommendation within 4 hours.
